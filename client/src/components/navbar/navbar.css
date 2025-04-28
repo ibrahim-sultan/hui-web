@@ -1,0 +1,206 @@
+
+.navbar {
+  background-color: #157646;
+  color: white;
+  padding: 0.5rem 0;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto; 
+  padding: 0 2rem;
+  width: 100%;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logo-img {
+  height: 50px;
+  width: auto;
+}
+
+.university-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.university-name {
+  font-size: 1.3rem;
+  font-weight: bold;
+  line-height: 1.2;
+  color: white;
+}
+
+.university-motto {
+  font-size: 0.8rem;
+  font-style: italic;
+  opacity: 0.9;
+  color: white;
+}
+.navbar-links {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  transition: all 0.3s ease;
+  gap: 3rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  line-height: 1.2;
+  margin-left: auto; 
+}
+.nav-link {
+  display: flex;
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: color 0.3s;
+  padding: 0.5rem 0;
+  display: block;
+  position: relative;
+  white-space: nowrap;
+}
+
+.nav-link:hover {
+  color: #f0f0f0;
+}
+
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: white;
+  transition: width 0.3s;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  z-index: 1001;
+  margin-left: 1rem;
+}
+
+.hamburger-line {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  margin: 5px 0;
+  transition: all 0.3s ease;
+}
+
+/* Mobile styles */
+@media (max-width: 992px) {
+  .navbar-links {
+    gap: 1.5rem;
+  }
+  
+  .university-name {
+    font-size: 1.1rem;
+  }
+  
+  .university-motto {
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar-container {
+    padding: 0 1.5rem;
+  }
+  
+  .hamburger {
+    display: block;
+  }
+  
+  .navbar-spacer {
+    display: none;
+  }
+  
+  .navbar-links {
+    position: fixed;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    background-color: #157646;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 0 2rem;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    transform: translateY(-150%);
+    opacity: 0;
+    pointer-events: none;
+    gap: 1rem;
+  }
+  
+  .navbar-links.active {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: all;
+  }
+  
+  .nav-link {
+    font-size: 1.1rem;
+    padding: 0.5rem 1rem;
+  }
+  
+ 
+  .hamburger.active .hamburger-line:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  
+  .hamburger.active .hamburger-line:nth-child(2) {
+    opacity: 0;
+  }
+  
+  .hamburger.active .hamburger-line:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    padding: 0.4rem 0;
+  }
+  
+  .logo-img {
+    height: 40px;
+  }
+  
+  .university-name {
+    font-size: 1rem;
+  }
+  
+  .university-motto {
+    font-size: 0.65rem;
+  }
+  
+  .navbar-links {
+    top: 70px;
+  }
+}

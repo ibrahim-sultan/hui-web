@@ -1,0 +1,63 @@
+.alhikmah-container {
+    padding: 5px;
+    max-width: 1000px;
+    margin: auto;
+    font-family: Arial, sans-serif;
+  }
+  
+  .alhikmah-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .alhikmah-logo {
+    margin-bottom: 40px;
+    width: 50px;
+    height: 50px;
+  }
+  
+  .alhikmah-info h2 {
+    margin: 0;
+    font-size: 1.5rem;
+  }
+  
+  .alhikmah-info p {
+    margin: 2px 0;
+    font-size: 0.95rem;
+    color: #444;
+   
+  }
+  
+  .alhikmah-grid {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 5px;
+    margin-top: 20px;
+  }
+  
+  .alhikmah-avatar {
+    width: 100%;
+    border-radius: 20%;
+    object-fit: cover;
+  }
+  
+  .alhikmah-publications {
+    margin-top: 55px;
+  }
+  
+  .alhikmah-publications h3 {
+    margin-bottom: 10px;
+    font-size: 1.25rem;
+  }
+  
+  .alhikmah-publication-entry {
+    margin-bottom: 15px;
+  }
+  
+  .alhikmah-publication-entry strong {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  

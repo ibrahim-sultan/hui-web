@@ -1,0 +1,164 @@
+/* Foot Section Styles */
+.foot-section {
+    background-color: #111;
+    color: #fff;
+    padding: 70px 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-image: url("../assest/moot.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  
+  .foot-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* Call to Action Styles */
+  .foot-cta {
+    text-align: center;
+    margin-bottom: 35px;
+    width: 100%;
+  }
+  
+  .foot-cta-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #fff;
+    letter-spacing: 1px;
+  }
+  
+  .foot-cta-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .foot-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 28px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    min-width: 200px;
+  }
+  
+  .foot-button-primary {
+    background-color: #157646;
+    color: white;
+    border: 2px solid #157646;
+  }
+  
+  .foot-button-primary:hover {
+    background-color: #0e5c34;
+    transform: translateY(-3px);
+  }
+  
+  .foot-button-secondary {
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+  }
+  
+  .foot-button-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-3px);
+  }
+  
+  .foot-button-icon {
+    margin-right: 10px;
+    font-size: 1rem;
+  }
+  
+  /* Info Styles */
+  .foot-info {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  
+  .foot-address {
+    color: white;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  
+  .foot-copyright {
+    color: white;
+    font-size: 0.9rem;
+  }
+  
+  /* Policies Styles */
+  .foot-policies {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+  }
+  
+  .foot-policy-link {
+    color: white;
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: color 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  .foot-policy-link:hover {
+    color: #157646;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .foot-section {
+      padding: 50px 20px;
+    }
+    
+    .foot-cta-title {
+      font-size: 1.8rem;
+      margin-bottom: 35px;
+    }
+    
+    .foot-button {
+      padding: 12px 20px;
+      min-width: 160px;
+      font-size: 0.9rem;
+    }
+    
+    .foot-policies {
+      gap: 15px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .foot-cta-buttons {
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+    }
+    
+    .foot-button {
+      width: 100%;
+      max-width: 250px;
+    }
+    
+    .foot-policies {
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+    
+    .foot-address {
+      font-size: 0.9rem;
+    }
+  }
