@@ -1,0 +1,469 @@
+.main-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.image-section {
+  position: relative;
+  width: 100%;
+  height: 430px;
+  overflow: hidden;
+}
+
+.background-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.overlay-box {
+  position: absolute;
+  bottom: 120px;
+  left: 150px;
+  background: #fff;
+  color: #333;
+  padding: 8px 17px;
+  font-size: 1.7rem;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  border-top: 8px solid #157646;
+  transition: all 0.3s;
+}
+
+.button-bar {
+  width: 100%;
+  background: #157646;
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  padding: 20px 0;
+  transition: all 0.3s;
+}
+
+.action-btn {
+  background: none;
+  border: 2px solid #fff;
+  color: #fff;
+  font-size: 1.2rem;
+  padding: 10px 22px;
+  margin: 0 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.2s, color 0.2s;
+}
+
+.action-btn:hover {
+  background: #fff;
+  color: #800000;
+}
+
+/* ----------- Responsive Styles ----------- */
+@media (max-width: 900px) {
+  .overlay-box {
+    left: 40px;
+    font-size: 1.2rem;
+    padding: 6px 12px;
+    bottom: 80px;
+  }
+  .image-section {
+    height: 260px;
+  }
+  .button-bar {
+    gap: 16px;
+    padding: 24px 0;
+  }
+  .action-btn {
+    font-size: 1rem;
+    padding: 12px 18px;
+  }
+}
+
+@media (max-width: 600px) {
+  .image-section {
+    height: 160px;
+  }
+  .overlay-box {
+    left: 12px;
+    right: 12px;
+    bottom: 24px;
+    font-size: 1rem;
+    padding: 8px 10px;
+    max-width: 90vw;
+    border-top: 4px solid #157646;
+  }
+  .button-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    padding: 18px 0;
+  }
+  .action-btn {
+    width: 90vw;
+    margin: 0 auto;
+    font-size: 1rem;
+    padding: 10px 0;
+  }
+}
+
+
+  /* INTELLECTUAL COMMUNITY */
+
+  .join{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    text-align: center;
+    margin-bottom: 70px;
+  }
+
+  .comm{
+    font-size: 35px;
+    font-weight: 600;
+    font-family: sans-serif;
+    color: #157646;
+    
+  }
+
+  .commit{
+    color: #157646;
+    font-size: 18px;
+    text-align: left;
+  }
+
+/* UG ADMINSSION */
+.center-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.custom-row {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap; /* makes it responsive */
+    justify-content: center;
+  max-width: 1100px;
+}
+
+.card-body{
+ text-align: left;
+}
+
+.card-title{
+    color: #157646 !important;
+}
+.card-text{
+    color: grey ;
+}
+
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.card {
+  flex: 1 1 calc(33.33% - 2rem);
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s;
+  min-width: 280px;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.card-content {
+  padding: 1.2rem;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  margin-bottom: 0.8rem;
+}
+
+.learn-more {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.6rem 1.2rem;
+  background-color: #157646;
+  color: white;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.3s;
+}
+
+.learn-more:hover {
+  background-color: #157646;
+}
+
+/* Responsive for smaller screens */
+@media (max-width: 992px) {
+  .card {
+    flex: 1 1 45%;
+  }
+}
+
+@media (max-width: 600px) {
+  .card {
+    flex: 1 1 100%;
+  }
+}
+/* 3 ROW  */
+
+.cards-container {
+  display: grid;
+  gap: 1.5rem;
+  padding: 1rem;
+}
+.card-content p{
+  color: green;
+}
+
+/* Mobile: 1 card per row */
+@media (max-width: 600px) {
+  .cards-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Tablet: 2 cards per row */
+@media (min-width: 601px) and (max-width: 1024px) {
+  .cards-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Desktop: 3 cards per row */
+@media (min-width: 1025px) {
+  .cards-container {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+.card {
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card-img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.card-content {
+  padding: 1rem;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.learn-more {
+  display: inline-block;
+  margin-top: 1rem;
+  color: #007bff;
+  text-decoration: none;
+}
+
+.learn-more:hover {
+  text-decoration: underline;
+}
+
+/* TUITION SECTION */
+
+.tuition-financial-aid {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  color: #333;
+}
+
+.tuition-financial-aid h1 {
+  color: #157646; /* UChicago maroon */
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.intro-text {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  text-align: center;
+  margin-bottom: 3rem;
+  color: #555;
+}
+
+.aid-section {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.aid-card {
+  flex: 1;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.aid-card:hover {
+  transform: translateY(-5px);
+}
+
+.aid-card h2 {
+  background-color: #157646;
+  color: white;
+  padding: 1rem;
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.card-content {
+  padding: 1.5rem;
+}
+
+.card-content h3 {
+  color: #157646;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.card-content ul {
+  padding-left: 1.5rem;
+  margin: 1rem 0;
+}
+
+.card-content li {
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+
+.learn-more-btn {
+  background-color: #157646;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: background-color 0.3s;
+}
+
+.learn-more-btn:hover {
+  background-color: #e87d24 ;
+}
+
+.contact-section {
+  text-align: center;
+  margin-top: 3rem;
+  padding: 1.5rem;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+}
+
+.contact-section a {
+  color: #800000;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.contact-section a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .aid-section {
+    flex-direction: column;
+  }
+  
+  .tuition-financial-aid h1 {
+    font-size: 2rem;
+  }
+}
+
+
+/* CIRCLE CARD */
+
+.circle-card-section {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+  padding: 3rem 2rem;
+  text-align: center;
+  background: #fff;
+}
+
+.circle-card {
+  max-width: 300px;
+  flex: 1 1 280px;
+}
+
+.circle-img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 1.2rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.circle-title {
+  font-size: 1.25rem;
+  color: #157646; /* Maroon tone like UChicago */
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  border-bottom: 2px dotted #157646;
+  display: inline-block;
+  padding-bottom: 0.3rem;
+}
+
+.circle-desc {
+  color: #333;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .circle-img {
+    width: 150px;
+    height: 150px;
+  }
+}

@@ -1,0 +1,288 @@
+.overlay2 {
+  background-image: url(../../assets/vv.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 70vh;
+}
+
+.acadtitle {
+  text-align: center;
+  margin-bottom: 30px;
+  color: white;
+}
+
+.main-heading {
+  margin-top: 80px;
+  font-size: 55px !important;
+}
+
+.slant {
+  background-color: #157646;
+  background-position: center;
+  clip-path: polygon(0 0, 100% 20%, 100% 100%, 0% 100%);
+  height: 70vh;
+  color: white;
+  text-align: center;
+  padding: 100px 20px;
+  margin-bottom: 45px;
+}
+
+.slant p {
+  font-size: 1.5rem;
+  margin-top: 40px;
+  line-height: 1.6;
+}
+
+.cta-button {
+  background-color: #e87d24;
+  color: white;
+  font-weight: bold;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 40px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+  border: 3px solid white;
+  margin-top: 30px;
+}
+.cta-button:hover {
+  background-color: #88440c;
+}
+
+.program {
+  text-align: center;
+  margin-top: 80px;
+}
+.program .ug {
+  font-size: 50px;
+  font-weight: 700;
+  color: #157646;
+}
+
+.program .offer {
+  margin-top: 30px;
+  font-size: 20px;
+  font-family: sans-serif;
+}
+
+  .programs-grid1 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 35px;
+  }
+  
+  .program-card1 {
+    border-radius: 10px;
+    padding: 2.5rem;
+    color: white;
+    position: relative;
+    overflow: hidden;
+    min-height: 300px;
+    display: flex;
+    align-items: flex-end;
+    transition: transform 0.3s ease;
+  }
+    
+  .program-card1:hover {
+  transform: scale(1.03);
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.3);
+}
+
+.program-card1::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.25);
+  transition: background 0.3s ease;
+  z-index: 0;
+}
+.program-card1:hover::before {
+  background:#e87d24 ;
+  opacity: 0.6;
+  
+}
+.program-card1 > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* QUICK LINK SECTION  */
+
+.quick-links {
+  background-color: #157646 !important;
+  color: #fff;
+  width: 100%;
+  max-width: 300px;
+  border: 1px solid #157646 !important;
+  border-radius: 4px;
+  overflow: hidden;
+  font-family: sans-serif;
+}
+
+.quick-links-toggle {
+  width: 100%;
+  background-color: #157646;
+  border: none;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: bold;
+  padding: 1rem;
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.quick-links-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background: #f4f4f4;
+  color: #157646;
+}
+
+.quick-links-list li {
+  border-top: 1px solid #ddd;
+}
+
+.quick-links-list li a {
+  display: block;
+  padding: 0.75rem 1rem;
+  text-decoration: none;
+  color: #157646;
+  font-weight: 500;
+  transition: background 0.3s ease;
+}
+
+.quick-links-list li a:hover {
+  background: #dbeeff;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .quick-links {
+    max-width: 100%;
+  }
+}
+
+  .program1 {
+    background: url('../../assets/program1.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  
+  .program2 {
+    background: url('../../assets/program2.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  
+  .program-content1 {
+    position: relative;
+    z-index: 2;
+  }
+  
+  .program-content1 h3 {
+    font-size: 45px;
+    margin-bottom: 1rem;
+    font-weight: 700;
+  }
+  
+  .vv{
+    position: relative;
+    margin-top: 30px;
+    background-image: url("../../assets/vv.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 90vh;
+  }
+ 
+.visit-card {
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+  background: white;
+  padding: 3rem 3.9rem;
+  max-width: 400px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  border-radius: 4px;
+}
+
+.visit-card h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.gray-text {
+  color: #157646;
+  font-weight: 700;
+}
+
+.blue-text {
+  color:#1edd7e;
+  font-weight: 700;
+}
+
+.visit-card p {
+  font-size: 1.3rem;
+  margin-bottom: 1.5rem;
+  color: #157646;
+}
+
+.visit-link {
+  text-decoration: none;
+  font-weight: bold;
+  color:#c65c00 !important;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.visit-link::after {
+ 
+  margin-left: 6px;
+  transition: transform 0.3s ease;
+}
+
+.visit-link:hover {
+  color: #c65c00;
+}
+
+.visit-link:hover::after {
+  transform: translateX(3px);
+}
+
+.social-bar {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 2rem;
+}
+
+.social-bar a {
+  width: 50px;
+  height: 50px;
+  background-color: #157646; /* blue circle */
+  color: white !important;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  font-size: 20px;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.social-bar a:hover {
+  transform: scale(1.1);
+  background-color: #007bb5; /* darker blue on hover */
+}
+
+  
+  

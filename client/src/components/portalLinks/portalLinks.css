@@ -1,0 +1,34 @@
+.portal-links {
+  background: linear-gradient(135deg, #157646 0%, #1a5f37 100%);
+  padding: 40px 0;
+  color: white;
+}
+
+.portal-links h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 2rem;
+}
+
+.portal-links-grid {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.portal-link-item {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 20px 30px;
+  border-radius: 12px;
+  color: white;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.3s ease;
+  min-width: 200px;
+  text-align: center;
+}
+
+.portal-link-item:hover {
+  background: rgba(255, 255, 255, 0.3);
+}

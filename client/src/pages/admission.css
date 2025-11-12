@@ -1,0 +1,749 @@
+/* Combined CSS for Admission page from admissionRequirements.css and applicationProcess.css */
+
+/* General container and layout */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Hero Section */
+.requirements-hero, .process-hero {
+  position: relative;
+  /* background: url('../assets/admission-hero.jpg') center center/cover no-repeat; */
+  background-color: #157646;
+  color: white;
+  padding: 6rem 0;
+  text-align: center;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(44, 62, 80, 0.7);
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.hero-content p {
+  font-size: 1.3rem;
+  margin-bottom: 2rem;
+}
+
+.hero-cta .hero-btn {
+  background-color: #e74c3c;
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.hero-cta .hero-btn:hover {
+  background-color: #c0392b;
+}
+
+/* Highlights */
+.hero-highlights {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  margin-top: 2rem;
+}
+
+.highlight-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.highlight-icon {
+  color: #e74c3c;
+  font-size: 1.5rem;
+}
+
+/* Requirements Sections */
+.requirements-content {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-top: 3rem;
+}
+
+.requirement-section {
+  flex: 1 1 45%;
+  background-color: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.requirement-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.req-icon {
+  color: #e74c3c;
+  font-size: 1.8rem;
+}
+
+.req-icon.postgrad {
+  color: #2980b9;
+}
+
+.requirement-card h3 {
+  margin-bottom: 1rem;
+  color: #2c3e50;
+}
+
+.requirements-list {
+  list-style: none;
+  padding: 0;
+  line-height: 1.8;
+}
+
+.requirements-list li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.check-icon {
+  color: #27ae60;
+}
+
+/* Program Specific */
+.program-specific .section-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.programs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.program-req-card {
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.program-req-card h3 {
+  margin-bottom: 1rem;
+  color: #e74c3c;
+}
+
+.program-requirements {
+  list-style: none;
+  padding: 0;
+}
+
+.program-requirements li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.3rem 0;
+  color: #34495e;
+}
+
+.jamb-subjects .section-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.subjects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.subject-card {
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.subject-card h3 {
+  margin-bottom: 0.5rem;
+  color: #2c3e50;
+}
+
+.subject-card p {
+  margin: 0.2rem 0;
+  color: #555;
+}
+
+/* Cut-off Marks */
+.cutoff-marks {
+  background-color: #f8f9fa;
+  padding: 3rem 0;
+  margin-top: 3rem;
+}
+
+.cutoff-content {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.cutoff-content h2 {
+  margin-bottom: 2rem;
+  color: #2c3e50;
+}
+
+.cutoff-info {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.cutoff-card {
+  background-color: white;
+  padding: 1.5rem 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  flex: 1 1 250px;
+}
+
+.cutoff-card h3 {
+  margin-bottom: 1rem;
+  color: #e74c3c;
+}
+
+.cutoff-score {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #27ae60;
+  margin-bottom: 0.5rem;
+}
+
+.cutoff-card.competitive {
+  background-color: #d35400;
+  color: white;
+}
+
+.cutoff-card.postgrad {
+  background-color: #2980b9;
+  color: white;
+}
+
+.cutoff-note {
+  margin-top: 1.5rem;
+  font-style: italic;
+  color: #7f8c8d;
+}
+
+/* Important Notes */
+.important-notes {
+  padding: 3rem 0;
+}
+
+.notes-content {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.notes-content h2 {
+  margin-bottom: 2rem;
+  color: #c0392b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.warning-icon {
+  font-size: 2rem;
+}
+
+.notes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.note-item {
+  background-color: #fef0f0;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #c0392b;
+}
+
+.note-icon {
+  font-size: 1.5rem;
+}
+
+/* Application CTA */
+.application-cta {
+  background-color: #2c3e50;
+  color: white;
+  padding: 3rem 0;
+  text-align: center;
+  margin-top: 3rem;
+  border-radius: 10px;
+}
+
+.application-cta h2 {
+  margin-bottom: 1rem;
+  font-size: 2rem;
+}
+
+.application-cta p {
+  margin-bottom: 2rem;
+  font-size: 1.2rem;
+}
+
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.cta-btn {
+  padding: 0.8rem 1.8rem;
+  border-radius: 5px;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.cta-btn.primary {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.cta-btn.primary:hover {
+  background-color: #c0392b;
+}
+
+.cta-btn.secondary {
+  background-color: white;
+  color: #2c3e50;
+  border: 2px solid #2c3e50;
+}
+
+.cta-btn.secondary:hover {
+  background-color: #2c3e50;
+  color: white;
+}
+
+/* Application Process Tabs */
+.program-tabs .tabs-header {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.tab-btn {
+  background-color: #ecf0f1;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 5px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.tab-btn.active, .tab-btn:hover {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.steps-timeline {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.timeline-item {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  background-color: white;
+  padding: 1rem 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.timeline-marker {
+  background-color: #e74c3c;
+  color: white;
+  font-weight: 700;
+  font-size: 1.2rem;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.timeline-content {
+  flex: 1;
+}
+
+.step-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.status-badge {
+  padding: 0.2rem 0.6rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.status-badge.required {
+  background-color: #27ae60;
+  color: white;
+}
+
+.status-badge.automatic {
+  background-color: #2980b9;
+  color: white;
+}
+
+.status-badge.recommended {
+  background-color: #f39c12;
+  color: white;
+}
+
+.status-badge.conditional {
+  background-color: #8e44ad;
+  color: white;
+}
+
+.step-description {
+  margin: 0.5rem 0 1rem 0;
+  color: #34495e;
+}
+
+.step-details ul {
+  padding-left: 1.2rem;
+  margin: 0;
+  color: #555;
+}
+
+.step-footer {
+  font-size: 0.9rem;
+  color: #7f8c8d;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+/* Required Documents */
+.required-documents {
+  background-color: #f8f9fa;
+  padding: 3rem 0;
+  margin-top: 3rem;
+}
+
+.documents-content {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.documents-list {
+  flex: 1 1 60%;
+}
+
+.documents-list h3 {
+  margin-bottom: 1rem;
+  color: #2c3e50;
+}
+
+.documents-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.document-item {
+  background-color: white;
+  padding: 1rem 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #34495e;
+}
+
+.doc-icon {
+  color: #2980b9;
+  font-size: 1.3rem;
+}
+
+.documents-note {
+  flex: 1 1 35%;
+  background-color: #dff0d8;
+  padding: 1.5rem;
+  border-radius: 10px;
+  color: #3c763d;
+  font-weight: 600;
+}
+
+.documents-note h4 {
+  margin-bottom: 1rem;
+}
+
+/* Application Fees */
+.application-fees {
+  padding: 3rem 0;
+  margin-top: 3rem;
+}
+
+.fees-grid {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.fee-card {
+  background-color: white;
+  padding: 1.5rem 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  flex: 1 1 250px;
+  text-align: center;
+}
+
+.fee-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.fee-icon {
+  color: #27ae60;
+  font-size: 1.5rem;
+}
+
+.fee-amount {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #e74c3c;
+  margin-bottom: 0.5rem;
+}
+
+.fee-details {
+  color: #555;
+}
+
+/* Payment Info */
+.payment-info {
+  max-width: 900px;
+  margin: 1.5rem auto 0 auto;
+  text-align: center;
+  font-weight: 600;
+  color: #34495e;
+}
+
+.payment-methods {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+
+.payment-methods span {
+  background-color: #ecf0f1;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+}
+
+/* Important Dates */
+.important-dates {
+  background-color: #f8f9fa;
+  padding: 3rem 0;
+  margin-top: 3rem;
+}
+
+.dates-timeline {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.date-item {
+  background-color: white;
+  padding: 1rem 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  flex: 1 1 250px;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.date-marker {
+  background-color: #e74c3c;
+  color: white;
+  padding: 0.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.date-content h4 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #2c3e50;
+}
+
+.date-value {
+  font-weight: 600;
+  color: #7f8c8d;
+}
+
+/* Help & Support */
+.help-support {
+  padding: 3rem 0;
+  margin-top: 3rem;
+}
+
+.support-content {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.support-options {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.support-card {
+  background-color: white;
+  padding: 1.5rem 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  flex: 1 1 250px;
+  color: #34495e;
+}
+
+.support-card h4 {
+  margin-bottom: 1rem;
+}
+
+/* Final CTA */
+.final-cta {
+  background-color: #2c3e50;
+  color: white;
+  padding: 3rem 0;
+  text-align: center;
+  margin-top: 3rem;
+  border-radius: 10px;
+}
+
+.final-cta h2 {
+  margin-bottom: 1rem;
+  font-size: 2rem;
+}
+
+.final-cta p {
+  margin-bottom: 2rem;
+  font-size: 1.2rem;
+}
+
+.final-cta .cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.final-cta .cta-btn {
+  padding: 0.8rem 1.8rem;
+  border-radius: 5px;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.final-cta .cta-btn.primary {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.final-cta .cta-btn.primary:hover {
+  background-color: #c0392b;
+}
+
+.final-cta .cta-btn.secondary {
+  background-color: white;
+  color: #2c3e50;
+  border: 2px solid #2c3e50;
+}
+
+.final-cta .cta-btn.secondary:hover {
+  background-color: #2c3e50;
+  color: white;
+}

@@ -1,0 +1,678 @@
+/* ===== CAMPUS SECTION ===== */
+.campus-section {
+  padding: 60px 20px;
+  background-color: #f7f7f7;
+}
+
+.campus-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.campus-text {
+  flex: 1 1 500px;
+}
+
+.campus-label {
+  color: #7c7c7c;
+  text-transform: uppercase;
+  font-size: 14px;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+}
+
+.campus-title {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #157646;
+}
+
+.campus-underline {
+  width: 50px;
+  height: 4px;
+  background-color: #caa24c;
+  margin-bottom: 25px;
+}
+
+.campus-description {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #444;
+}
+
+.campus-image {
+  flex: 1 1 500px;
+}
+
+.campus-image img {
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  object-fit: cover;
+}
+
+/* ===== STUDENT LIFE ACTIVITIES SECTION ===== */
+.student-life-section {
+  display: grid;
+  gap: 1.5rem;
+  padding: 1rem;
+}
+
+/* Mobile: 1 card per row */
+@media (max-width: 600px) {
+  .student-life-section {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Tablet: 2 cards per row */
+@media (min-width: 601px) and (max-width: 1024px) {
+  .student-life-section {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Desktop: 3 cards per row */
+@media (min-width: 1025px) {
+  .student-life-section {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+.card {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+  overflow: hidden;
+  min-height: 300px;
+  color: #fff;
+  display: flex;
+  align-items: flex-end;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.02);
+}
+
+.card.athletics {
+  background-image: url('../../assets/atletics.jpg');
+}
+
+.card.art {
+  background-image: url('../../assets/art.jpg');
+}
+
+.card.well {
+  background-image: url('../../assets/well.jpg');
+}
+
+.overlay {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 1rem;
+  width: 100%;
+}
+
+.overlay h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.overlay p {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.arrow-icon {
+  font-size: 1.5rem;
+  margin-top: 1rem;
+}
+
+
+/* ===== Render card sections  ===== */
+
+.student-life-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  padding: 1.5rem;
+}
+
+/* Show 2 cards per row on screens >= 600px */
+@media (min-width: 600px) {
+  .student-life-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.life-card {
+  position: relative;
+  min-height: 300px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  color: white;
+  transition: transform 0.3s ease;
+}
+
+.life-card:hover {
+  transform: scale(1.02);
+}
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 1rem;
+  width: 100%;
+}
+
+.arrow-icon {
+  font-size: 1.5rem;
+  margin-top: 1rem;
+}
+
+
+
+
+/* ===== ARROW ICON ===== */
+.arrow-icon {
+  margin-top: 20px;
+  font-size: 24px;
+  background: white;
+  color: black;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.life-card .arrow-icon {
+  margin-top: 15px;
+  font-size: 20px;
+  width: 36px;
+  height: 36px;
+}
+
+/* SLIDER SECTION */
+
+/* Slider Container */
+.slider-container {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.slider-wrapper {
+  position: relative;
+  width: 100%;
+  height: 500px;
+}
+
+/* Slides Container */
+.slides-container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+/* Slide Group - Contains 3 images */
+.slide-group {
+  min-width: 100%;
+  display: flex;
+  height: 100%;
+}
+
+/* Individual Slide */
+.slide {
+  flex: 1;
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+}
+
+.slide-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.slide:hover .slide-image {
+  transform: scale(1.05);
+}
+
+/* Slide Overlay */
+.slide-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    45deg,
+    rgba(0, 0, 0, 0.7) 0%,
+    rgba(0, 0, 0, 0.4) 50%,
+    rgba(0, 0, 0, 0.2) 100%
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+.slide-content h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  line-height: 1.2;
+}
+
+.slide-content p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  max-width: 400px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+  opacity: 0.95;
+}
+
+/* Navigation Arrows */
+.nav-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 10;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.nav-arrow:hover {
+  background: rgba(255, 255, 255, 1);
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.nav-arrow-left {
+  left: 20px;
+}
+
+.nav-arrow-right {
+  right: 20px;
+}
+
+.nav-arrow svg {
+  color: #333;
+}
+
+/* Dots Container */
+.dots-container {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 12px;
+  z-index: 10;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dot:hover {
+  border-color: rgba(255, 255, 255, 0.9);
+  transform: scale(1.2);
+}
+
+.dot.active {
+  background: #ff4444;
+  border-color: #ff4444;
+  box-shadow: 0 0 10px rgba(255, 68, 68, 0.5);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .slider-wrapper {
+    height: 350px;
+  }
+  
+  .slide-content h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .slide-content p {
+    font-size: 0.95rem;
+    max-width: 280px;
+  }
+  
+  .nav-arrow {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .nav-arrow-left {
+    left: 10px;
+  }
+  
+  .nav-arrow-right {
+    right: 10px;
+  }
+  
+  .dots-container {
+    bottom: 15px;
+  }
+  
+  .dot {
+    width: 10px;
+    height: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .slider-wrapper {
+    height: 250px;
+  }
+  
+  .slide-content h2 {
+    font-size: 1.2rem;
+  }
+  
+  .slide-content p {
+    font-size: 0.85rem;
+    max-width: 220px;
+  }
+  
+  .slide-overlay {
+    padding: 15px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,1 @@
+- [x] Change the grey background color of the program cards in client/src/pages/Academic.jsx from '#dcdcdc' to '#ffffff' for better visibility.

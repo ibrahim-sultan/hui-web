@@ -1,0 +1,709 @@
+/* Student Services Page Styles */
+.student-services-page {
+  padding: 0;
+  margin: 0;
+  min-height: 100vh;
+  background: #fafafa;
+}
+
+/* Updated styles for green gradient hero */
+.services-hero {
+  background: linear-gradient(135deg, #157646 0%, #1a5f37 100%) !important;
+  color: white;
+  position: relative;
+  padding: 120px 0 80px;
+  overflow: hidden;
+}
+
+.services-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="%23ffffff" stroke-width="0.5" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>') !important;
+  opacity: 0.3;
+}
+
+.hero-overlay {
+  background: rgba(21, 118, 70, 0.7) !important;
+}
+
+/* Support program titles white */
+.support-programs .program-card h3 {
+  color: white !important;
+}
+
+/* "Need Assistance" section background green */
+.contact-cta {
+  background: linear-gradient(135deg, #157646 0%, #1a5f37 100%) !important;
+  color: white;
+  text-align: center;
+  padding: 80px 0;
+}
+
+.contact-cta .cta-content h2,
+.contact-cta .cta-content p {
+  color: white;
+}
+
+.contact-cta .cta-btn.primary {
+  background-color: white;
+  color: #157646;
+  font-weight: bold;
+}
+
+.contact-cta .cta-btn.primary:hover {
+  background-color: #1a5f37;
+  color: white;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .services-hero {
+    padding: 40px 0;
+  }
+  
+  .contact-cta {
+    padding: 30px 0;
+  }
+}
+
+/* Hero Section */
+.services-hero {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  position: relative;
+  padding: 120px 0 80px;
+  color: white;
+  overflow: hidden;
+}
+
+.services-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="%23ffffff" stroke-width="0.5" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+  opacity: 0.3;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.hero-content h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+}
+
+.hero-highlights {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.highlight {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 1rem 1.5rem;
+  border-radius: 50px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.highlight:hover {
+  transform: translateY(-3px);
+}
+
+.highlight-icon {
+  font-size: 1.2rem;
+  color: #ffd700;
+}
+
+/* Core Services */
+.core-services {
+  padding: 80px 0;
+  background: white;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.section-header h2 {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.section-header p {
+  font-size: 1.1rem;
+  color: #666;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.service-card {
+  background: white;
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  border-top: 4px solid #667eea;
+  transition: transform 0.3s ease;
+}
+
+.service-card:nth-child(2n) {
+  border-top-color: #764ba2;
+}
+
+.service-card:nth-child(3n) {
+  border-top-color: #4facfe;
+}
+
+.service-card:hover {
+  transform: translateY(-10px);
+}
+
+.service-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.service-icon {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+}
+
+.service-card:nth-child(2n) .service-icon {
+  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+}
+
+.service-card:nth-child(3n) .service-icon {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+.service-header h3 {
+  color: #333;
+  font-size: 1.4rem;
+  margin: 0;
+}
+
+.service-description {
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.service-features h4 {
+  color: #333;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.service-features ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem 0;
+}
+
+.service-features li {
+  padding: 0.3rem 0;
+  color: #555;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.service-features li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: #28a745;
+  font-weight: 700;
+}
+
+.service-contact {
+  background: #f8f9fa;
+  padding: 1rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.service-contact strong {
+  color: #333;
+}
+
+/* Campus Facilities */
+.campus-facilities {
+  padding: 80px 0;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.facilities-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.facility-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.facility-card:hover {
+  transform: translateY(-5px);
+}
+
+.facility-icon {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 1.5rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+}
+
+.facility-card h4 {
+  color: #333;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.facility-card p {
+  color: #666;
+  line-height: 1.5;
+}
+
+/* Support Programs */
+.support-programs {
+  padding: 80px 0;
+  background: white;
+}
+
+.programs-list {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  gap: 2rem;
+}
+
+.program-card {
+  background: white;
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  border-left: 4px solid #667eea;
+  transition: transform 0.3s ease;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+.program-card:nth-child(2n) {
+  border-left-color: #764ba2;
+}
+
+.program-card:nth-child(3n) {
+  border-left-color: #4facfe;
+}
+
+.program-card:hover {
+  transform: translateY(-3px);
+}
+
+.program-content {
+  flex: 1;
+}
+
+.program-content h3 {
+  color: #333;
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+}
+
+.program-description {
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.program-details {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+}
+
+.detail-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.detail-label {
+  font-weight: 600;
+  color: #333;
+  font-size: 0.9rem;
+}
+
+.detail-value {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.program-action {
+  flex-shrink: 0;
+}
+
+.learn-more-btn {
+  background: #667eea;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.learn-more-btn:hover {
+  background: #764ba2;
+  transform: translateY(-2px);
+}
+
+/* Emergency Services */
+.emergency-services {
+  padding: 80px 0;
+  background: #fff3cd;
+}
+
+.emergency-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.emergency-content h2 {
+  text-align: center;
+  color: #856404;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.emergency-content > p {
+  text-align: center;
+  color: #856404;
+  font-size: 1.1rem;
+  margin-bottom: 3rem;
+}
+
+.emergency-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.emergency-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  border-left: 4px solid #ffc107;
+}
+
+.emergency-card.urgent {
+  border-left-color: #dc3545;
+  background: #fff5f5;
+}
+
+.emergency-card h3 {
+  color: #333;
+  margin-bottom: 1.5rem;
+  font-size: 1.3rem;
+}
+
+.contact-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.contact-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 8px;
+}
+
+.contact-label {
+  font-weight: 600;
+  color: #333;
+}
+
+.contact-number {
+  color: #dc3545;
+  font-weight: 600;
+}
+
+.safety-list,
+.wellness-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.safety-list li,
+.wellness-list li {
+  padding: 0.5rem 0;
+  color: #555;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.safety-list li::before,
+.wellness-list li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: #28a745;
+  font-weight: 700;
+}
+
+/* Service Hours */
+.service-hours {
+  padding: 80px 0;
+  background: white;
+}
+
+.hours-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.hours-card {
+  background: #f8f9fa;
+  padding: 2rem;
+  border-radius: 15px;
+  border-top: 4px solid #667eea;
+}
+
+.hours-card:nth-child(2n) {
+  border-top-color: #764ba2;
+}
+
+.hours-card:nth-child(3n) {
+  border-top-color: #4facfe;
+}
+
+.hours-card h3 {
+  color: #333;
+  margin-bottom: 1.5rem;
+  font-size: 1.3rem;
+}
+
+.hours-info p {
+  color: #666;
+  margin: 0.5rem 0;
+  line-height: 1.5;
+}
+
+.hours-info strong {
+  color: #333;
+}
+
+/* Contact CTA */
+.contact-cta {
+  padding: 80px 0;
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+  color: white;
+  text-align: center;
+}
+
+.cta-content h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.cta-content p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.cta-btn {
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+}
+
+.cta-btn.primary {
+  background: #ffd700;
+  color: #333;
+}
+
+.cta-btn.primary:hover {
+  background: #ffed4e;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.cta-btn.secondary {
+  background: transparent;
+  color: white;
+  border: 2px solid white;
+}
+
+.cta-btn.secondary:hover {
+  background: white;
+  color: #333;
+  transform: translateY(-2px);
+}
+
+.office-info {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 2rem;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.office-info p {
+  margin: 0.5rem 0;
+  opacity: 0.9;
+}
+
+.office-info strong {
+  color: #ffd700;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+  
+  .hero-highlights {
+    gap: 1rem;
+  }
+  
+  .services-grid,
+  .facilities-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .program-card {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .program-details {
+    grid-template-columns: 1fr;
+  }
+  
+  .emergency-grid,
+  .hours-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .cta-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .cta-btn {
+    width: 100%;
+    max-width: 250px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+  
+  .service-card,
+  .facility-card,
+  .program-card,
+  .emergency-card,
+  .hours-card {
+    padding: 1rem;
+  }
+  
+  .section-header h2 {
+    font-size: 2rem;
+  }
+}

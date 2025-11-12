@@ -1,10 +1,10 @@
 
 import React, { useState } from "react";
 import "./upcoming.css";
-import img1 from "../../assest/kayode.jpg";
-import img2 from "../../assest/research.jpg";
-import img3 from "../../assest/ku8.jpg";
-import img4 from "../../assest/rep6.jpg";
+import img1 from "../../assets/kayode.jpg";
+import img2 from "../../assets/research.jpg";
+import img3 from "../../assets/ku8.jpg";
+import img4 from "../../assets/rep6.jpg";
 
 const events = [
   {

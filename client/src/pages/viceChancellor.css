@@ -1,0 +1,478 @@
+/* Vice Chancellor Page Styles */
+
+.vice-chancellor-page {
+  margin-top: 80px;
+  min-height: 100vh;
+}
+
+/* Hero Section */
+.vc-hero {
+  position: relative;
+  height: 400px;
+  background: linear-gradient(135deg, #157646, #1a8754, #0f5132);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.vc-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.1) 0%, transparent 60%);
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: white;
+}
+
+.vc-intro h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  animation: fadeInUp 1s ease;
+}
+
+.vc-intro h2 {
+  font-size: 1.8rem;
+  font-weight: 400;
+  margin-bottom: 0.5rem;
+  opacity: 0.95;
+  animation: fadeInUp 1s ease 0.2s both;
+}
+
+.vc-intro p {
+  font-size: 1.2rem;
+  opacity: 0.9;
+  animation: fadeInUp 1s ease 0.4s both;
+}
+
+/* Main Content */
+.vc-main-content {
+  padding: 80px 0;
+  background: #f8f9fa;
+}
+
+.content-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+/* Biography Section */
+.biography-section {
+  background: white;
+  border-radius: 15px;
+  padding: 40px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.biography-section:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.section-header h3 {
+  font-size: 2rem;
+  color: #157646;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.section-line {
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, #157646, #1a8754);
+  margin-bottom: 2rem;
+  border-radius: 2px;
+}
+
+/* Quote Section */
+.quote-section {
+  background: linear-gradient(135deg, #157646, #1a8754);
+  color: white;
+  padding: 30px;
+  border-radius: 12px;
+  margin: 30px 0;
+  position: relative;
+  font-style: italic;
+}
+
+.quote-icon {
+  font-size: 2rem;
+  opacity: 0.7;
+  margin-bottom: 1rem;
+}
+
+.quote-section blockquote {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin: 0 0 1rem 0;
+}
+
+.quote-section cite {
+  font-size: 0.9rem;
+  opacity: 0.9;
+  font-weight: 500;
+}
+
+/* Bio Text */
+.bio-text {
+  margin: 30px 0;
+}
+
+.bio-text p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #444;
+  margin-bottom: 1.5rem;
+  text-align: justify;
+}
+
+/* Qualifications */
+.qualifications {
+  background: #f8f9fa;
+  padding: 25px;
+  border-radius: 10px;
+  margin-top: 30px;
+}
+
+.qualifications h4 {
+  color: #157646;
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+}
+
+.qualifications ul {
+  list-style: none;
+  padding: 0;
+}
+
+.qualifications li {
+  padding: 8px 0;
+  padding-left: 20px;
+  position: relative;
+  color: #555;
+}
+
+.qualifications li::before {
+  content: '🎓';
+  position: absolute;
+  left: 0;
+  top: 8px;
+}
+
+/* Achievements Sidebar */
+.achievements-sidebar {
+  background: white;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  height: fit-content;
+  position: sticky;
+  top: 100px;
+}
+
+.achievements-sidebar h3 {
+  color: #157646;
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.achievement-item {
+  display: flex;
+  align-items: start;
+  margin-bottom: 25px;
+  padding: 15px;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.achievement-item:hover {
+  background: #f8f9fa;
+  transform: translateX(5px);
+}
+
+.achievement-icon {
+  font-size: 1.5rem;
+  color: #157646;
+  margin-right: 15px;
+  margin-top: 5px;
+}
+
+.achievement-content h4 {
+  color: #333;
+  font-size: 1rem;
+  margin-bottom: 5px;
+}
+
+.achievement-content p {
+  color: #666;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+/* Rankings Highlight */
+.rankings-highlight {
+  margin-top: 30px;
+  padding: 25px;
+  background: linear-gradient(135deg, #157646, #1a8754);
+  color: white;
+  border-radius: 12px;
+}
+
+.rankings-highlight h4 {
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+}
+
+.ranking-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+}
+
+.rank-badge {
+  background: white;
+  color: #157646;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-weight: bold;
+  margin-right: 15px;
+  min-width: 40px;
+  text-align: center;
+}
+
+/* Initiatives Section */
+.initiatives-section {
+  padding: 80px 0;
+  background: white;
+}
+
+.section-header.center {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.section-header.center h2 {
+  font-size: 2.5rem;
+  color: #157646;
+  margin-bottom: 1rem;
+}
+
+.section-header.center p {
+  font-size: 1.2rem;
+  color: #666;
+}
+
+.initiatives-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.initiative-card {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  border-left: 4px solid #157646;
+}
+
+.initiative-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.initiative-card h3 {
+  color: #157646;
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+}
+
+.initiative-card p {
+  color: #666;
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+/* Vision Section */
+.vision-section {
+  padding: 80px 0;
+  background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+}
+
+.vision-content {
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.vision-content h2 {
+  font-size: 2.5rem;
+  color: #157646;
+  margin-bottom: 2rem;
+}
+
+.vision-text {
+  background: white;
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  margin-bottom: 50px;
+}
+
+.vision-text p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #444;
+  font-style: italic;
+}
+
+.goals-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  margin-top: 50px;
+}
+
+.goal-item {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  text-align: left;
+}
+
+.goal-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.goal-item h4 {
+  color: #157646;
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+}
+
+.goal-item p {
+  color: #666;
+  line-height: 1.6;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .content-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  
+  .achievements-sidebar {
+    position: static;
+  }
+}
+
+@media (max-width: 768px) {
+  .vc-hero {
+    height: 300px;
+  }
+  
+  .vc-intro h1 {
+    font-size: 2.5rem;
+  }
+  
+  .vc-intro h2 {
+    font-size: 1.4rem;
+  }
+  
+  .biography-section,
+  .achievements-sidebar {
+    padding: 25px;
+  }
+  
+  .vc-main-content,
+  .initiatives-section,
+  .vision-section {
+    padding: 50px 0;
+  }
+  
+  .section-header.center h2,
+  .vision-content h2 {
+    font-size: 2rem;
+  }
+  
+  .initiatives-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .goals-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .vc-intro h1 {
+    font-size: 2rem;
+  }
+  
+  .biography-section,
+  .achievements-sidebar,
+  .vision-text {
+    padding: 20px;
+  }
+  
+  .quote-section {
+    padding: 20px;
+  }
+  
+  .initiative-card,
+  .goal-item {
+    padding: 20px;
+  }
+}

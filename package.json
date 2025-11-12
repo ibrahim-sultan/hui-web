@@ -1,0 +1,32 @@
+{
+  "name": "hui-web",
+  "version": "1.0.0",
+  "description": "Al-Hikmah University Web Application",
+  "main": "api/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "cd api && npm start",
+    "server:dev": "cd api && npm run dev",
+    "client": "cd client && npm start",
+    "build": "cd client && npm run build",
+    "install-server": "cd api && npm install",
+    "install-client": "cd client && npm install",
+    "install-all": "npm run install-server && npm run install-client",
+    "test": "cd client && npm test"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ibrahim-sultan/hui-web.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ibrahim-sultan/hui-web/issues"
+  },
+  "homepage": "https://github.com/ibrahim-sultan/hui-web#readme"
+}
