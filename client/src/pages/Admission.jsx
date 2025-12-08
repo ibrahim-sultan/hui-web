@@ -125,11 +125,11 @@ function Admission() {
           </div>
           <div className="fee-card">
             <div className="fee-header">Postgraduate</div>
-            <div className="fee-amount">₦15,000</div>
+            <div className="fee-amount">₦25,000</div>
             <div className="fee-details">Non-refundable application fee</div>
           </div>
         </div>
-        <p className="payment-info">Payment can be made via bank transfer, online payment, or at the university cashier.</p>
+        <p className="payment-info">Payment can be made via bank transfer, online payment, </p>
       </section>
 
       <section className="important-dates">
