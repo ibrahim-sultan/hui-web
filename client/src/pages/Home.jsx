@@ -26,7 +26,7 @@ const Home = () => {
   useEffect(() => {
     const fetchVideo = async () => {
       try {
-        const res = await axios.get('http://localhost:4000/api/home-video');
+        const res = await axios.get('/api/home-video');
         setVideo(res.data || { url: '', active: false });
         setShowVideo(!!res.data?.active && !!res.data?.url);
       } catch (e) {

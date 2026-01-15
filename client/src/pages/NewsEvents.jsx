@@ -27,7 +27,7 @@ const NewsEvents = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const res = await axios.get('http://localhost:4000/api/posts');
+        const res = await axios.get('/api/posts');
         const mapped = res.data.map(p => ({
           id: p.slug,
           title: p.title,
@@ -37,7 +37,7 @@ const NewsEvents = () => {
           time: p.eventTime || '',
           location: p.location || '',
           author: p.authorName || 'Admin',
-          image: `http://localhost:4000/${String(p.featuredImage || '').replace(/\\/g, '/')}`,
+          image: `/${String(p.featuredImage || '').replace(/\\/g, '/')}`,
           views: p.views || 0,
           type: p.category === 'events' ? 'event' : 'news',
           featured: false

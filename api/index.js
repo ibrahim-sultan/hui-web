@@ -258,6 +258,15 @@ app.post('/api/login', authLimiter, validateLogin, handleValidationErrors, async
 app.use('/api/posts', postRoutes);
 app.use('/api/admin', adminRoutes);
 
+// Serve client build in production (SPA fallback)
+const clientBuildPath = path.join(process.cwd(), '../client/build');
+if (fs.existsSync(clientBuildPath)) {
+  app.use(express.static(clientBuildPath));
+  app.get('*', (req, res, next) => {
+    if (req.path.startsWith('/api')) return next();
+    res.sendFile(path.join(clientBuildPath, 'index.html'));
+  });
+}
 app.get('/api/home-video', async (req, res) => {
   try {
     const setting = await Setting.findOne({ type: 'homeVideo' });

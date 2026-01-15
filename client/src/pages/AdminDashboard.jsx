@@ -26,7 +26,7 @@ const AdminDashboard = () => {
 
   const fetchPosts = async () => {
     try {
-      const response = await axios.get('http://localhost:4000/api/posts');
+      const response = await axios.get('/api/posts');
       setPosts(response.data);
     } catch (error) {
       console.error('Error fetching posts:', error);
@@ -53,7 +53,7 @@ const AdminDashboard = () => {
   useEffect(() => {
     const loadHomeVideo = async () => {
       try {
-        const res = await axios.get('http://localhost:4000/api/home-video');
+        const res = await axios.get('/api/home-video');
         setHomeVideoUrl(res.data?.url || '');
         setHomeVideoActive(!!res.data?.active);
       } catch {}
@@ -62,7 +62,7 @@ const AdminDashboard = () => {
   }, []);
   const saveHomeVideo = async () => {
     try {
-      await axios.post('http://localhost:4000/api/admin/home-video', { url: homeVideoUrl, active: homeVideoActive }, {
+      await axios.post('/api/admin/home-video', { url: homeVideoUrl, active: homeVideoActive }, {
         headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' }
       });
       alert('Home video updated');
@@ -75,7 +75,7 @@ const AdminDashboard = () => {
   const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this post?')) {
       try {
-        await axios.delete(`http://localhost:4000/api/posts/${id}`, {
+        await axios.delete(`/api/posts/${id}`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         fetchPosts();

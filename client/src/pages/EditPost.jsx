@@ -40,7 +40,7 @@ const EditPost = () => {
 
   const fetchPost = async () => {
     try {
-      const response = await axios.get(`http://localhost:4000/api/posts/admin/${id}`, {
+      const response = await axios.get(`/api/posts/admin/${id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       const post = response.data;
@@ -102,7 +102,7 @@ const EditPost = () => {
         });
       }
 
-      await axios.put(`http://localhost:4000/api/posts/${id}`, formDataToSend, {
+      await axios.put(`/api/posts/${id}`, formDataToSend, {
         headers: {
           'Authorization': `Bearer ${token}`
         }

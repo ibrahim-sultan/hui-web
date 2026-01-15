@@ -14,7 +14,7 @@ const NewsDetail = () => {
     const load = async () => {
       try {
         setLoading(true);
-        const res = await axios.get(`http://localhost:4000/api/posts/${id}`);
+        const res = await axios.get(`/api/posts/${id}`);
         const p = res.data;
         const contentHtml = (p.content || '').replace(/\n/g, '<br/>');
         const articleData = {
@@ -28,8 +28,8 @@ const NewsDetail = () => {
           location: p.location || '',
           author: p.authorName || 'Admin',
           authorBio: '',
-          image: `http://localhost:4000/${String(p.featuredImage || '').replace(/\\/g, '/')}`,
-          images: Array.isArray(p.images) ? p.images.map(img => `http://localhost:4000/${String(img || '').replace(/\\/g, '/')}`) : [],
+          image: `/${String(p.featuredImage || '').replace(/\\/g, '/')}`,
+          images: Array.isArray(p.images) ? p.images.map(img => `/${String(img || '').replace(/\\/g, '/')}`) : [],
           views: p.views || 0,
           readTime: '',
           tags: p.tags || [],
@@ -37,7 +37,7 @@ const NewsDetail = () => {
           featured: false
         };
         setArticle(articleData);
-        const listRes = await axios.get('http://localhost:4000/api/posts');
+        const listRes = await axios.get('/api/posts');
         const related = listRes.data
           .filter(x => x.slug !== p.slug && x.category === p.category)
           .slice(0, 3)
@@ -46,7 +46,7 @@ const NewsDetail = () => {
             title: x.title,
             excerpt: x.excerpt || '',
             date: x.publishedAt || x.createdAt,
-            image: `http://localhost:4000/${x.featuredImage}`
+            image: `/${String(x.featuredImage || '').replace(/\\/g, '/')}`
           }));
         setRelatedNews(related);
       } catch (e) {
