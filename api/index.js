@@ -13,6 +13,8 @@ import multer from 'multer';
 import path from 'path';
 import fs from 'fs';
 import postRoutes from "./routes/posts.js";
+import adminRoutes from "./routes/admin.js";
+import Setting from "./models/Setting.js";
 
 dotenv.config();
 
@@ -20,6 +22,9 @@ const app = express();
 const PORT = process.env.PORT || 4000;
 const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key';
 const BCRYPT_ROUNDS = parseInt(process.env.BCRYPT_ROUNDS) || 12;
+const ADMIN_EMAIL = process.env.ADMIN_EMAIL;
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
+const ADMIN_USERNAME = process.env.ADMIN_USERNAME || 'admin';
 
 // Create uploads directory if it doesn't exist
 const uploadsDir = path.join(process.cwd(), 'uploads');
@@ -30,12 +35,15 @@ if (!fs.existsSync(uploadsDir)) {
 // Security middleware
 app.use(helmet({
   crossOriginEmbedderPolicy: false,
+  crossOriginResourcePolicy: { policy: 'cross-origin' },
   contentSecurityPolicy: {
     directives: {
       defaultSrc: ["'self'"],
       styleSrc: ["'self'", "'unsafe-inline'"],
       scriptSrc: ["'self'"],
       imgSrc: ["'self'", "data:", "https:"],
+      frameSrc: ["'self'", "https://www.youtube.com", "https://youtube.com"],
+      childSrc: ["'self'", "https://www.youtube.com", "https://youtube.com"]
     },
   },
 }));
@@ -65,15 +73,21 @@ const authLimiter = rateLimit({
 app.use(limiter);
 
 // CORS configuration
-const corsOptions = {
-  origin: process.env.NODE_ENV === 'production' 
-    ? ['https://your-domain.com'] // Replace with your actual domain in production
-    : ['http://localhost:3000', 'http://127.0.0.1:3000'],
-  credentials: true,
-  optionsSuccessStatus: 200,
-};
-
-app.use(cors(corsOptions));
+let corsOptions;
+if (process.env.NODE_ENV === 'production') {
+  corsOptions = {
+    origin: ['https://your-domain.com'],
+    credentials: true,
+    optionsSuccessStatus: 200,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+  };
+  app.use(cors(corsOptions));
+  app.options('*', cors(corsOptions));
+} else {
+  app.use(cors());
+  app.options('*', cors());
+}
 
 // Body parsing middleware with size limits
 app.use(express.json({ limit: '10mb' }));
@@ -87,7 +101,36 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/universit
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
-  .then(() => console.log('✅ Connected to MongoDB successfully'))
+  .then(async () => {
+    console.log('✅ Connected to MongoDB successfully');
+    try {
+      if (ADMIN_EMAIL && ADMIN_PASSWORD) {
+        let admin = await User.findOne({ email: ADMIN_EMAIL });
+        if (!admin) {
+          const hashed = await bcrypt.hash(ADMIN_PASSWORD, BCRYPT_ROUNDS);
+          admin = new User({
+            username: ADMIN_USERNAME,
+            email: ADMIN_EMAIL,
+            password: hashed,
+            role: 'admin',
+            isActive: true
+          });
+          await admin.save();
+          console.log(`🔐 Seeded admin user: ${ADMIN_EMAIL}`);
+        } else if (admin.role !== 'admin') {
+          admin.role = 'admin';
+          await admin.save();
+          console.log(`🔐 Updated user to admin role: ${ADMIN_EMAIL}`);
+        } else {
+          console.log(`🔐 Admin user exists: ${ADMIN_EMAIL}`);
+        }
+      } else {
+        console.log('ℹ️ ADMIN_EMAIL/ADMIN_PASSWORD not set; skipping admin seed');
+      }
+    } catch (seedErr) {
+      console.error('❌ Admin seed error:', seedErr.message);
+    }
+  })
   .catch(err => {
     console.error('❌ MongoDB connection error:', err.message);
   });
@@ -213,6 +256,16 @@ app.post('/api/login', authLimiter, validateLogin, handleValidationErrors, async
 
 // Post routes
 app.use('/api/posts', postRoutes);
+app.use('/api/admin', adminRoutes);
+
+app.get('/api/home-video', async (req, res) => {
+  try {
+    const setting = await Setting.findOne({ type: 'homeVideo' });
+    res.json(setting || { type: 'homeVideo', url: '', active: false });
+  } catch (e) {
+    res.status(500).json({ message: e.message });
+  }
+});
 
 // Health check
 app.get('/api/health', (req, res) => {

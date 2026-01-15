@@ -33,14 +33,15 @@ router.post('/', adminAuth, upload.fields([
   { name: 'images', maxCount: 10 }
 ]), async (req, res) => {
   try {
-    const { title, content } = req.body;
+    const { title, content, category, eventDate, eventTime, location } = req.body;
     
     if (!title || !content) {
       return res.status(400).json({ message: 'Title and content are required' });
     }
 
-    const featuredImage = req.files.featuredImage ? req.files.featuredImage[0].path : '';
-    const images = req.files.images ? req.files.images.map(file => file.path) : [];
+    const normalizePath = (p) => p.replace(/\\/g, '/');
+    const featuredImage = req.files.featuredImage ? normalizePath(req.files.featuredImage[0].path) : '';
+    const images = req.files.images ? req.files.images.map(file => normalizePath(file.path)) : [];
 
     if (!featuredImage) {
       return res.status(400).json({ message: 'Featured image is required' });
@@ -49,6 +50,10 @@ router.post('/', adminAuth, upload.fields([
     const post = new Post({
       title,
       content,
+      category: category || 'news',
+      eventDate: eventDate || undefined,
+      eventTime: eventTime || undefined,
+      location: location || undefined,
       featuredImage,
       images,
       author: req.user._id,
@@ -78,6 +83,18 @@ router.get('/', async (req, res) => {
   }
 });
 
+router.get('/admin/:id', adminAuth, async (req, res) => {
+  try {
+    const post = await Post.findById(req.params.id);
+    if (!post) {
+      return res.status(404).json({ message: 'Post not found' });
+    }
+    res.json(post);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
 // Get single post by slug
 router.get('/:slug', async (req, res) => {
   try {
@@ -92,21 +109,33 @@ router.get('/:slug', async (req, res) => {
 });
 
 // Update post
-router.put('/:id', adminAuth, upload.array('images', 10), async (req, res) => {
+router.put('/:id', adminAuth, upload.fields([
+  { name: 'featuredImage', maxCount: 1 },
+  { name: 'images', maxCount: 10 }
+]), async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);
     if (!post) {
       return res.status(404).json({ message: 'Post not found' });
     }
 
-    const { title, content } = req.body;
+    const { title, content, category, eventDate, eventTime, location } = req.body;
     
     post.title = title || post.title;
     post.content = content || post.content;
+    post.category = category || post.category;
+    if (typeof eventDate !== 'undefined') post.eventDate = eventDate || undefined;
+    if (typeof eventTime !== 'undefined') post.eventTime = eventTime || undefined;
+    if (typeof location !== 'undefined') post.location = location || undefined;
 
-    if (req.files && req.files.length > 0) {
-      post.featuredImage = req.files[0].path;
-      post.images = req.files.slice(1).map(file => file.path);
+    const normalizePath = (p) => p.replace(/\\/g, '/');
+    if (req.files) {
+      if (req.files.featuredImage && req.files.featuredImage[0]) {
+        post.featuredImage = normalizePath(req.files.featuredImage[0].path);
+      }
+      if (req.files.images && req.files.images.length > 0) {
+        post.images = req.files.images.map(file => normalizePath(file.path));
+      }
     }
 
     await post.save();

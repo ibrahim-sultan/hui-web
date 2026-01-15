@@ -8,14 +8,21 @@ const AdminDashboard = () => {
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
   const token = localStorage.getItem('token');
+  const user = (() => {
+    try {
+      return JSON.parse(localStorage.getItem('user'));
+    } catch {
+      return null;
+    }
+  })();
 
   useEffect(() => {
-    if (!token) {
+    if (!token || !user || user.role !== 'admin') {
       navigate('/login');
       return;
     }
     fetchPosts();
-  }, [token, navigate]);
+  }, [token, user, navigate]);
 
   const fetchPosts = async () => {
     try {
@@ -25,6 +32,43 @@ const AdminDashboard = () => {
       console.error('Error fetching posts:', error);
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleNormalizePaths = async () => {
+    try {
+      const resp = await axios.post('http://localhost:4000/api/admin/migrations/normalize-paths', {}, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      alert(`Normalized ${resp.data.updated} posts`);
+      fetchPosts();
+    } catch (err) {
+      const msg = err.response?.data?.message || 'Migration failed';
+      alert(msg);
+    }
+  };
+
+  const [homeVideoUrl, setHomeVideoUrl] = useState('');
+  const [homeVideoActive, setHomeVideoActive] = useState(false);
+  useEffect(() => {
+    const loadHomeVideo = async () => {
+      try {
+        const res = await axios.get('http://localhost:4000/api/home-video');
+        setHomeVideoUrl(res.data?.url || '');
+        setHomeVideoActive(!!res.data?.active);
+      } catch {}
+    };
+    loadHomeVideo();
+  }, []);
+  const saveHomeVideo = async () => {
+    try {
+      await axios.post('http://localhost:4000/api/admin/home-video', { url: homeVideoUrl, active: homeVideoActive }, {
+        headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' }
+      });
+      alert('Home video updated');
+    } catch (e) {
+      console.error('Home video update error:', e);
+      alert(e.response?.data?.message || (e.message || 'Failed to update home video'));
     }
   };
 
@@ -60,9 +104,26 @@ const AdminDashboard = () => {
           <button onClick={() => navigate('/create-post')} className="btn btn-primary">
             Create New Post
           </button>
+          <button onClick={handleNormalizePaths} className="btn btn-secondary">
+            Fix Image Paths
+          </button>
           <button onClick={handleLogout} className="btn btn-secondary">
             Logout
           </button>
+        </div>
+        <div className="admin-video-config" style={{ marginTop: 20 }}>
+          <h3>Homepage Video</h3>
+          <input
+            type="text"
+            placeholder="YouTube link (e.g., https://youtu.be/...)"
+            value={homeVideoUrl}
+            onChange={(e) => setHomeVideoUrl(e.target.value)}
+            style={{ width: '100%', padding: 10, marginBottom: 10 }}
+          />
+          <label style={{ display: 'block', marginBottom: 10 }}>
+            <input type="checkbox" checked={homeVideoActive} onChange={(e) => setHomeVideoActive(e.target.checked)} /> Active
+          </label>
+          <button onClick={saveHomeVideo} className="btn btn-primary">Save Video</button>
         </div>
       </div>
 
@@ -70,7 +131,7 @@ const AdminDashboard = () => {
         {posts.map(post => (
           <div key={post._id} className="post-card">
             <img 
-              src={`http://localhost:4000/${post.featuredImage}`} 
+              src={`http://localhost:4000/${String(post.featuredImage || '').replace(/\\\\/g, '/')}`} 
               alt={post.title} 
               className="post-image"
             />

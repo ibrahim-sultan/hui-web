@@ -26,12 +26,10 @@ export const auth = async (req, res, next) => {
 export const adminAuth = async (req, res, next) => {
   try {
     await auth(req, res, () => {
-      // For now, allow all authenticated users to create posts
-      // You can add role-based access later
-      if (req.user) {
+      if (req.user && req.user.role === 'admin') {
         next();
       } else {
-        res.status(403).json({ message: 'Access required' });
+        res.status(403).json({ message: 'Admin access required' });
       }
     });
   } catch (error) {

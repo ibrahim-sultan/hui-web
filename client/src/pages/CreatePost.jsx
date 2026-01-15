@@ -7,11 +7,27 @@ const CreatePost = () => {
     title: '',
     content: '',
     featuredImage: null,
-    images: []
+    images: [],
+    category: 'news',
+    eventDate: '',
+    eventTime: '',
+    location: ''
   });
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const token = localStorage.getItem('token');
+  const user = (() => {
+    try {
+      return JSON.parse(localStorage.getItem('user'));
+    } catch {
+      return null;
+    }
+  })();
+
+  if (!token || !user || user.role !== 'admin') {
+    navigate('/login');
+    return null;
+  }
 
   const handleChange = (e) => {
     if (e.target.name === 'featuredImage' || e.target.name === 'images') {
@@ -35,6 +51,12 @@ const CreatePost = () => {
       const formDataToSend = new FormData();
       formDataToSend.append('title', formData.title);
       formDataToSend.append('content', formData.content);
+      formDataToSend.append('category', formData.category);
+      if (formData.category === 'events') {
+        if (formData.eventDate) formDataToSend.append('eventDate', formData.eventDate);
+        if (formData.eventTime) formDataToSend.append('eventTime', formData.eventTime);
+        if (formData.location) formDataToSend.append('location', formData.location);
+      }
 
       // Add featured image
       if (formData.featuredImage && formData.featuredImage[0]) {
@@ -50,7 +72,6 @@ const CreatePost = () => {
 
       const response = await axios.post('/api/posts', formDataToSend, {
         headers: {
-          'Content-Type': 'multipart/form-data',
           'Authorization': `Bearer ${token}`
         }
       });
@@ -81,6 +102,63 @@ const CreatePost = () => {
             placeholder="Enter post title"
           />
         </div>
+
+        <div className="form-group">
+          <label htmlFor="category">Category</label>
+          <select
+            id="category"
+            name="category"
+            value={formData.category}
+            onChange={handleChange}
+            required
+          >
+            <option value="news">News</option>
+            <option value="events">Events</option>
+            <option value="academics">Academics</option>
+            <option value="research">Research</option>
+            <option value="sports">Sports</option>
+            <option value="student-life">Student Life</option>
+            <option value="announcements">Announcements</option>
+          </select>
+        </div>
+
+        {formData.category === 'events' && (
+          <>
+            <div className="form-group">
+              <label htmlFor="eventDate">Event Date</label>
+              <input
+                type="date"
+                id="eventDate"
+                name="eventDate"
+                value={formData.eventDate}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="eventTime">Event Time</label>
+              <input
+                type="text"
+                id="eventTime"
+                name="eventTime"
+                value={formData.eventTime}
+                onChange={handleChange}
+                placeholder="e.g., 8:00am - 12:30pm"
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="location">Location</label>
+              <input
+                type="text"
+                id="location"
+                name="location"
+                value={formData.location}
+                onChange={handleChange}
+                placeholder="Event location"
+              />
+            </div>
+          </>
+        )}
 
         <div className="form-group">
           <label htmlFor="content">Content</label>

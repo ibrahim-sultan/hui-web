@@ -8,27 +8,52 @@ const EditPost = () => {
     title: '',
     content: '',
     featuredImage: null,
-    images: []
+    images: [],
+    category: 'news',
+    eventDate: '',
+    eventTime: '',
+    location: ''
   });
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const navigate = useNavigate();
   const token = localStorage.getItem('token');
+  const user = (() => {
+    try {
+      return JSON.parse(localStorage.getItem('user'));
+    } catch {
+      return null;
+    }
+  })();
 
   useEffect(() => {
+    if (!token || !user || user.role !== 'admin') {
+      navigate('/login');
+      return;
+    }
     fetchPost();
   }, [id]);
 
+  if (!token || !user || user.role !== 'admin') {
+    return null;
+  }
+
   const fetchPost = async () => {
     try {
-      const response = await axios.get(`http://localhost:4000/api/posts`);
-      const post = response.data.find(p => p._id === id);
+      const response = await axios.get(`http://localhost:4000/api/posts/admin/${id}`, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      const post = response.data;
       if (post) {
         setFormData({
           title: post.title,
           content: post.content,
           featuredImage: null,
-          images: []
+          images: [],
+          category: post.category || 'news',
+          eventDate: post.eventDate ? post.eventDate.slice(0, 10) : '',
+          eventTime: post.eventTime || '',
+          location: post.location || ''
         });
       }
     } catch (error) {
@@ -60,6 +85,12 @@ const EditPost = () => {
       const formDataToSend = new FormData();
       formDataToSend.append('title', formData.title);
       formDataToSend.append('content', formData.content);
+      formDataToSend.append('category', formData.category);
+      if (formData.category === 'events') {
+        if (formData.eventDate) formDataToSend.append('eventDate', formData.eventDate);
+        if (formData.eventTime) formDataToSend.append('eventTime', formData.eventTime);
+        if (formData.location) formDataToSend.append('location', formData.location);
+      }
 
       if (formData.featuredImage && formData.featuredImage[0]) {
         formDataToSend.append('featuredImage', formData.featuredImage[0]);
@@ -73,7 +104,6 @@ const EditPost = () => {
 
       await axios.put(`http://localhost:4000/api/posts/${id}`, formDataToSend, {
         headers: {
-          'Content-Type': 'multipart/form-data',
           'Authorization': `Bearer ${token}`
         }
       });
@@ -105,6 +135,63 @@ const EditPost = () => {
             placeholder="Enter post title"
           />
         </div>
+
+        <div className="form-group">
+          <label htmlFor="category">Category</label>
+          <select
+            id="category"
+            name="category"
+            value={formData.category}
+            onChange={handleChange}
+            required
+          >
+            <option value="news">News</option>
+            <option value="events">Events</option>
+            <option value="academics">Academics</option>
+            <option value="research">Research</option>
+            <option value="sports">Sports</option>
+            <option value="student-life">Student Life</option>
+            <option value="announcements">Announcements</option>
+          </select>
+        </div>
+
+        {formData.category === 'events' && (
+          <>
+            <div className="form-group">
+              <label htmlFor="eventDate">Event Date</label>
+              <input
+                type="date"
+                id="eventDate"
+                name="eventDate"
+                value={formData.eventDate}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="eventTime">Event Time</label>
+              <input
+                type="text"
+                id="eventTime"
+                name="eventTime"
+                value={formData.eventTime}
+                onChange={handleChange}
+                placeholder="e.g., 8:00am - 12:30pm"
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="location">Location</label>
+              <input
+                type="text"
+                id="location"
+                name="location"
+                value={formData.location}
+                onChange={handleChange}
+                placeholder="Event location"
+              />
+            </div>
+          </>
+        )}
 
         <div className="form-group">
           <label htmlFor="content">Content</label>

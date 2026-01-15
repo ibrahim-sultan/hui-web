@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import axios from 'axios';
 import { FaCalendarAlt, FaUser, FaEye, FaTags, FaShare, FaArrowLeft, FaFacebook, FaTwitter, FaLinkedin, FaWhatsapp } from 'react-icons/fa';
 import './newsDetail.css';
 
@@ -9,86 +10,55 @@ const NewsDetail = () => {
   const [relatedNews, setRelatedNews] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // Sample article data - in a real app, this would be fetched from an API
-  const sampleArticle = {
-    id: 1,
-    title: "Al-Hikmah University Ranked 1st Private University in Kwara State",
-    content: `
-      <p>Al-Hikmah University, Ilorin, has achieved a remarkable milestone by being ranked as the 1st Private University in Kwara State according to the prestigious 2025 Times Higher Education Impact Rankings. This achievement marks a significant recognition of the university's commitment to academic excellence, research innovation, and societal impact.</p>
-
-      <h3>Outstanding Performance in Multiple Categories</h3>
-      <p>The ranking places Al-Hikmah University at the top among private universities in Kwara State, 2nd overall in the state, and 3rd in the North-Central region of Nigeria. This exceptional performance reflects the university's dedication to maintaining the highest standards of education while fostering moral and intellectual development among its students.</p>
-
-      <h3>Vice Chancellor's Statement</h3>
-      <p>Professor Noah Yusuf, the Vice-Chancellor of Al-Hikmah University, expressed his gratitude and pride in this achievement: "This ranking is a testament to the hard work and dedication of our entire university community - faculty, staff, and students. It validates our mission of 'Learning for Wisdom and Morality' and reinforces our commitment to providing world-class education."</p>
-
-      <h3>Key Factors Contributing to the Ranking</h3>
-      <p>The Times Higher Education Impact Rankings evaluate universities based on their performance against the United Nations' Sustainable Development Goals (SDGs). Al-Hikmah University excelled in several key areas:</p>
-      <ul>
-        <li><strong>Quality Education:</strong> The university's innovative teaching methods and comprehensive academic programs</li>
-        <li><strong>Research Excellence:</strong> Groundbreaking research contributions across various disciplines</li>
-        <li><strong>Community Impact:</strong> Extensive outreach programs and community development initiatives</li>
-        <li><strong>Infrastructure Development:</strong> State-of-the-art facilities and learning environments</li>
-        <li><strong>Industry Partnerships:</strong> Strong collaborations with local and international organizations</li>
-      </ul>
-
-      <h3>Academic Programs and Innovation</h3>
-      <p>The university currently offers over 75 programs across 9 faculties, including the recently launched Faculty of Computing, Engineering and Technology. This expansion reflects the institution's commitment to meeting the evolving needs of students and the job market.</p>
-
-      <h3>Future Prospects</h3>
-      <p>This ranking achievement positions Al-Hikmah University for continued growth and excellence. The university plans to leverage this recognition to attract top-tier faculty, forge new international partnerships, and expand its research capabilities.</p>
-
-      <h3>Student Success Stories</h3>
-      <p>The university's commitment to holistic education has produced graduates who are making significant contributions in various fields. Alumni are serving in leadership positions across government, private sector, and academic institutions both nationally and internationally.</p>
-
-      <p>This achievement is not just a victory for Al-Hikmah University but also for the entire educational landscape of Kwara State and Nigeria. It demonstrates the potential of private universities to contribute significantly to national development through quality education and research.</p>
-    `,
-    excerpt: "The university achieves top ranking in the 2025 Times Higher Education Impact Rankings, marking a significant milestone in academic excellence.",
-    category: 'achievements',
-    date: '2025-01-15',
-    author: 'PR Department',
-    authorBio: 'The Public Relations Department of Al-Hikmah University is responsible for managing communications and sharing updates about university achievements and developments.',
-    image: '/api/placeholder/800/400',
-    views: 1250,
-    readTime: '8 min read',
-    tags: ['Rankings', 'Academic Excellence', 'Awards', 'University News'],
-    type: 'news',
-    featured: true
-  };
-
-  const sampleRelatedNews = [
-    {
-      id: 2,
-      title: "2025/2026 Admission Process Now Open",
-      excerpt: "Applications for undergraduate and postgraduate programs are now being accepted.",
-      date: '2025-01-10',
-      image: '/api/placeholder/300/200'
-    },
-    {
-      id: 3,
-      title: "New Faculty of Computing, Engineering and Technology Launched",
-      excerpt: "The university expands its academic offerings with modern technology programs.",
-      date: '2025-01-08',
-      image: '/api/placeholder/300/200'
-    },
-    {
-      id: 4,
-      title: "Vice Chancellor Receives Award for Educational Excellence",
-      excerpt: "Prof. Noah Yusuf honored with Outstanding Leadership in Education Award.",
-      date: '2025-01-03',
-      image: '/api/placeholder/300/200'
-    }
-  ];
-
   useEffect(() => {
-    // Simulate API call
-    setLoading(true);
-    setTimeout(() => {
-      setArticle(sampleArticle);
-      setRelatedNews(sampleRelatedNews);
-      setLoading(false);
-    }, 1000);
+    const load = async () => {
+      try {
+        setLoading(true);
+        const res = await axios.get(`http://localhost:4000/api/posts/${id}`);
+        const p = res.data;
+        const contentHtml = (p.content || '').replace(/\n/g, '<br/>');
+        const articleData = {
+          id: p.slug,
+          title: p.title,
+          content: contentHtml,
+          excerpt: p.excerpt || '',
+          category: p.category || 'news',
+          date: p.category === 'events' ? p.eventDate : (p.publishedAt || p.createdAt),
+          eventTime: p.eventTime || '',
+          location: p.location || '',
+          author: p.authorName || 'Admin',
+          authorBio: '',
+          image: `http://localhost:4000/${String(p.featuredImage || '').replace(/\\/g, '/')}`,
+          images: Array.isArray(p.images) ? p.images.map(img => `http://localhost:4000/${String(img || '').replace(/\\/g, '/')}`) : [],
+          views: p.views || 0,
+          readTime: '',
+          tags: p.tags || [],
+          type: p.category === 'events' ? 'event' : 'news',
+          featured: false
+        };
+        setArticle(articleData);
+        const listRes = await axios.get('http://localhost:4000/api/posts');
+        const related = listRes.data
+          .filter(x => x.slug !== p.slug && x.category === p.category)
+          .slice(0, 3)
+          .map(x => ({
+            id: x.slug,
+            title: x.title,
+            excerpt: x.excerpt || '',
+            date: x.publishedAt || x.createdAt,
+            image: `http://localhost:4000/${x.featuredImage}`
+          }));
+        setRelatedNews(related);
+      } catch (e) {
+        setArticle(null);
+        setRelatedNews([]);
+      } finally {
+        setLoading(false);
+      }
+    };
+    load();
   }, [id]);
+
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -156,7 +126,9 @@ const NewsDetail = () => {
                 <FaCalendarAlt />
                 {formatDate(article.date)}
               </span>
-              <span className="read-time">{article.readTime}</span>
+              {article.type === 'event' && article.eventTime && (
+                <span className="read-time">{article.eventTime}</span>
+              )}
             </div>
             <h1>{article.title}</h1>
             <div className="article-stats">
@@ -176,6 +148,29 @@ const NewsDetail = () => {
               <div className="featured-image">
                 <img src={article.image} alt={article.title} />
               </div>
+              
+              {article.images && article.images.length > 0 && (
+                <div className="article-gallery">
+                  {article.images.map((src, idx) => (
+                    <img key={idx} src={src} alt={`${article.title} - ${idx + 1}`} className="gallery-image" />
+                  ))}
+                </div>
+              )}
+              
+              {article.type === 'event' && (
+                <div className="event-details">
+                  {article.eventTime && (
+                    <span className="event-time">
+                      {article.eventTime}
+                    </span>
+                  )}
+                  {article.location && (
+                    <span className="event-location">
+                      {article.location}
+                    </span>
+                  )}
+                </div>
+              )}
               
               <div className="article-text" dangerouslySetInnerHTML={{ __html: article.content }} />
 

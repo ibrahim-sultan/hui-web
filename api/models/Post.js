@@ -17,7 +17,7 @@ const postSchema = new mongoose.Schema({
   content: {
     type: String,
     required: [true, 'Post content is required'],
-    minlength: [50, 'Content must be at least 50 characters long']
+    minlength: [1, 'Content is required']
   },
   excerpt: {
     type: String,
@@ -50,6 +50,17 @@ const postSchema = new mongoose.Schema({
     type: String,
     enum: ['news', 'events', 'academics', 'research', 'sports', 'student-life', 'announcements'],
     default: 'news'
+  },
+  eventDate: {
+    type: Date
+  },
+  eventTime: {
+    type: String,
+    trim: true
+  },
+  location: {
+    type: String,
+    trim: true
   },
   tags: [{
     type: String,

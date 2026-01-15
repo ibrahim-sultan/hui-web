@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 import { FaCalendarAlt, FaUser, FaEye, FaSearch, FaFilter, FaTags, FaClock, FaMapMarkerAlt, FaArrowRight } from 'react-icons/fa';
 import './newsEvents.css';
 
@@ -12,124 +13,42 @@ const NewsEvents = () => {
 
   const categories = [
     { id: 'all', name: 'All Categories' },
-    { id: 'academic', name: 'Academic' },
-    { id: 'admission', name: 'Admissions' },
+    { id: 'news', name: 'News' },
     { id: 'events', name: 'Events' },
+    { id: 'academics', name: 'Academics' },
     { id: 'research', name: 'Research' },
     { id: 'sports', name: 'Sports' },
-    { id: 'culture', name: 'Culture' },
-    { id: 'achievements', name: 'Achievements' }
+    { id: 'student-life', name: 'Student Life' },
+    { id: 'announcements', name: 'Announcements' }
   ];
 
-  // Sample news and events data
-  const newsItems = [
-    {
-      id: 1,
-      title: "Al-Hikmah University Ranked 1st Private University in Kwara State",
-      excerpt: "The university achieves top ranking in the 2025 Times Higher Education Impact Rankings, marking a significant milestone in academic excellence.",
-      category: 'achievements',
-      date: '2025-01-15',
-      author: 'PR Department',
-      image: '/api/placeholder/400/250',
-      views: 1250,
-      type: 'news',
-      featured: true
-    },
-    {
-      id: 2,
-      title: "2025/2026 Admission Process Now Open",
-      excerpt: "Applications for undergraduate and postgraduate programs are now being accepted. Early applications receive priority consideration.",
-      category: 'admission',
-      date: '2025-01-10',
-      author: 'Admissions Office',
-      image: '/api/placeholder/400/250',
-      views: 850,
-      type: 'news'
-    },
-    {
-      id: 3,
-      title: "Annual Research Conference 2025",
-      excerpt: "Join us for our flagship research conference showcasing cutting-edge research from faculty and students across all disciplines.",
-      category: 'research',
-      date: '2025-02-20',
-      time: '9:00 AM',
-      location: 'Main Auditorium',
-      author: 'Research Office',
-      image: '/api/placeholder/400/250',
-      views: 420,
-      type: 'event'
-    },
-    {
-      id: 4,
-      title: "New Faculty of Computing, Engineering and Technology Launched",
-      excerpt: "The university expands its academic offerings with the launch of a new faculty focusing on modern technology and engineering disciplines.",
-      category: 'academic',
-      date: '2025-01-08',
-      author: 'Academic Affairs',
-      image: '/api/placeholder/400/250',
-      views: 675,
-      type: 'news'
-    },
-    {
-      id: 5,
-      title: "Cultural Week 2025: Celebrating Diversity",
-      excerpt: "A week-long celebration of cultural diversity featuring performances, exhibitions, and international food festival.",
-      category: 'culture',
-      date: '2025-03-15',
-      time: '10:00 AM',
-      location: 'University Grounds',
-      author: 'Student Affairs',
-      image: '/api/placeholder/400/250',
-      views: 380,
-      type: 'event'
-    },
-    {
-      id: 6,
-      title: "Scholarship Opportunities Available for 2025/2026 Session",
-      excerpt: "Multiple scholarship opportunities are available for deserving students. Applications close on February 28, 2025.",
-      category: 'admission',
-      date: '2025-01-05',
-      author: 'Financial Aid Office',
-      image: '/api/placeholder/400/250',
-      views: 920,
-      type: 'news'
-    },
-    {
-      id: 7,
-      title: "Inter-University Sports Competition 2025",
-      excerpt: "Al-Hikmah University hosts the annual inter-university sports competition with participation from 15 universities.",
-      category: 'sports',
-      date: '2025-04-10',
-      time: '8:00 AM',
-      location: 'Sports Complex',
-      author: 'Sports Department',
-      image: '/api/placeholder/400/250',
-      views: 290,
-      type: 'event'
-    },
-    {
-      id: 8,
-      title: "Vice Chancellor Receives Award for Educational Excellence",
-      excerpt: "Prof. Noah Yusuf honored with the Outstanding Leadership in Education Award by the Nigerian Education Forum.",
-      category: 'achievements',
-      date: '2025-01-03',
-      author: 'PR Department',
-      image: '/api/placeholder/400/250',
-      views: 540,
-      type: 'news'
-    },
-    {
-      id: 9,
-      title: "Digital Library Resources Now Available 24/7",
-      excerpt: "Students and faculty can now access comprehensive digital library resources round the clock through the new online portal.",
-      category: 'academic',
-      date: '2024-12-28',
-      author: 'Library Services',
-      image: '/api/placeholder/400/250',
-      views: 315,
-      type: 'news'
-    }
-  ];
+  const [newsItems, setNewsItems] = useState([]);
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        const res = await axios.get('http://localhost:4000/api/posts');
+        const mapped = res.data.map(p => ({
+          id: p.slug,
+          title: p.title,
+          excerpt: p.excerpt || (p.content ? (p.content.length > 120 ? p.content.slice(0, 117) + '...' : p.content) : ''),
+          category: p.category || 'news',
+          date: p.category === 'events' ? p.eventDate : (p.publishedAt || p.createdAt),
+          time: p.eventTime || '',
+          location: p.location || '',
+          author: p.authorName || 'Admin',
+          image: `http://localhost:4000/${String(p.featuredImage || '').replace(/\\/g, '/')}`,
+          views: p.views || 0,
+          type: p.category === 'events' ? 'event' : 'news',
+          featured: false
+        }));
+        setNewsItems(mapped);
+      } catch (err) {
+        setNewsItems([]);
+      }
+    };
+    fetchPosts();
+  }, []);
 
   // Filter items based on active tab, search term, and category
   const filteredItems = newsItems.filter(item => {
@@ -147,7 +66,7 @@ const NewsEvents = () => {
   const currentItems = filteredItems.slice(startIndex, startIndex + itemsPerPage);
 
   // Featured news (for hero section)
-  const featuredNews = newsItems.filter(item => item.featured)[0] || newsItems[0];
+  const featuredNews = newsItems[0] || { image: '/api/placeholder/400/250', title: '', excerpt: '', category: 'news', date: new Date().toISOString(), author: '', views: 0 };
 
   // Latest news (sidebar)
   const latestNews = newsItems
