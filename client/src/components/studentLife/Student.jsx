@@ -17,9 +17,16 @@ import slidee6 from "../../assets/slidee6.jpg";
 import slidee7 from "../../assets/slidee7.jpg";
 import slidee8 from "../../assets/slidee8.jpg";
 import slidee9 from "../../assets/slidee9.jpg";
+import img1 from "../../assets/1.jpg";
+import img8 from "../../assets/8.jpg";
+import img10 from "../../assets/10.jpg";
+import img13 from "../../assets/13.jpg";
+import img14 from "../../assets/14.jpg";
 
 function Student() {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [viewerOpen, setViewerOpen] = useState(false);
+  const [viewerIndex, setViewerIndex] = useState(0);
 
   const slides = [
     { id: 1, image: slidee1,},
@@ -100,6 +107,26 @@ function Student() {
     </section>
   );
 
+  const galleryImages = [
+    { src: img1, alt: 'Campus Moment 1' },
+    { src: img8, alt: 'Campus Moment 8' },
+    { src: img10, alt: 'Campus Moment 10' },
+    { src: img13, alt: 'Campus Moment 13' },
+    { src: img14, alt: 'Campus Moment 14' },
+    { src: slidee4, alt: 'Student Life 4' },
+    { src: slidee8, alt: 'Student Life 8' },
+    { src: slidee6, alt: 'Student Life 6' },
+    { src: slidee7, alt: 'Student Life 7' },
+    { src: slidee9, alt: 'Student Life 9' },
+  ];
+  const openViewer = (idx) => {
+    setViewerIndex(idx);
+    setViewerOpen(true);
+  };
+  const closeViewer = () => setViewerOpen(false);
+  const prevViewer = () => setViewerIndex((i) => (i - 1 + galleryImages.length) % galleryImages.length);
+  const nextViewer = () => setViewerIndex((i) => (i + 1) % galleryImages.length);
+
   return (
     <div>
       {/* Campus Life Section */}
@@ -161,9 +188,35 @@ function Student() {
         </div>
       </section>
 
+      <section className="life-gallery">
+        <div className="life-gallery-header">
+          <h2>Student Life Gallery</h2>
+          <p>A glimpse into everyday moments and special events on campus</p>
+        </div>
+        <div className="life-gallery-grid">
+          {galleryImages.map((img, idx) => (
+            <div key={idx} className="life-gallery-item" onClick={() => openViewer(idx)}>
+              <img src={img.src} alt={img.alt} />
+              <div className="gallery-overlay">
+                <span>View</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
       {/* Render card sections */}
       {renderCards(cards)}
       {renderCards(cardss)}
+
+      {viewerOpen && (
+        <div className="gallery-lightbox" onClick={closeViewer}>
+          <button className="lightbox-close" aria-label="Close" onClick={closeViewer}>×</button>
+          <button className="lightbox-nav prev" aria-label="Previous" onClick={(e)=>{e.stopPropagation(); prevViewer();}}>‹</button>
+          <img className="lightbox-image" src={galleryImages[viewerIndex].src} alt={galleryImages[viewerIndex].alt} onClick={(e)=>e.stopPropagation()} />
+          <button className="lightbox-nav next" aria-label="Next" onClick={(e)=>{e.stopPropagation(); nextViewer();}}>›</button>
+        </div>
+      )}
 
       {/* Image Slider Section */}
        <div>

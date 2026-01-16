@@ -1,8 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FaUserGraduate, FaHome, FaHeartbeat, FaBook, FaBriefcase, FaUsers, FaLaptop, FaCoffee, FaBus, FaShieldAlt, FaHandsHelping, FaPrayingHands } from 'react-icons/fa';
 import './studentServices.css';
+import img1 from "../assets/1.jpg";
+import img8 from "../assets/8.jpg";
+import img10 from "../assets/10.jpg";
+import img13 from "../assets/13.jpg";
+import img14 from "../assets/14.jpg";
+import slidee4 from "../assets/slidee4.jpg";
+import slidee6 from "../assets/slidee6.jpg";
+import slidee7 from "../assets/slidee7.jpg";
+import slidee8 from "../assets/slidee8.jpg";
+import slidee9 from "../assets/slidee9.jpg";
 
 const StudentServices = () => {
+  const [viewerOpen, setViewerOpen] = useState(false);
+  const [viewerIndex, setViewerIndex] = useState(0);
+
   const services = [
     {
       icon: <FaHome />,
@@ -92,6 +105,27 @@ const StudentServices = () => {
     { icon: <FaShieldAlt />, title: "Security Services", description: "24/7 campus security ensuring student safety" },
     { icon: <FaHandsHelping />, title: "Counseling Services", description: "Professional counseling for academic and personal challenges" }
   ];
+
+  const galleryImages = [
+    { src: img1, alt: 'Campus Moment 1' },
+    { src: img8, alt: 'Campus Moment 8' },
+    { src: img10, alt: 'Campus Moment 10' },
+    { src: img13, alt: 'Campus Moment 13' },
+    { src: img14, alt: 'Campus Moment 14' },
+    { src: slidee4, alt: 'Student Life 4' },
+    { src: slidee6, alt: 'Student Life 6' },
+    { src: slidee7, alt: 'Student Life 7' },
+    { src: slidee8, alt: 'Student Life 8' },
+    { src: slidee9, alt: 'Student Life 9' },
+  ];
+
+  const openViewer = (idx) => {
+    setViewerIndex(idx);
+    setViewerOpen(true);
+  };
+  const closeViewer = () => setViewerOpen(false);
+  const prevViewer = () => setViewerIndex((i) => (i - 1 + galleryImages.length) % galleryImages.length);
+  const nextViewer = () => setViewerIndex((i) => (i + 1) % galleryImages.length);
 
   const supportPrograms = [
     {
@@ -201,6 +235,23 @@ const StudentServices = () => {
                 </div>
                 <h3>{facility.title}</h3>
                 <p>{facility.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="services-gallery">
+        <div className="container">
+          <div className="section-header">
+            <h2>Student Services Gallery</h2>
+            <p>Explore scenes from our facilities and student support activities</p>
+          </div>
+          <div className="services-gallery-grid">
+            {galleryImages.map((img, idx) => (
+              <div key={idx} className="services-gallery-item" onClick={() => openViewer(idx)}>
+                <img src={img.src} alt={img.alt} />
+                <div className="gallery-overlay"><span>View</span></div>
               </div>
             ))}
           </div>
@@ -373,6 +424,15 @@ const StudentServices = () => {
           </div>
         </div>
       </section>
+      
+      {viewerOpen && (
+        <div className="gallery-lightbox" onClick={closeViewer}>
+          <button className="lightbox-close" aria-label="Close" onClick={closeViewer}>×</button>
+          <button className="lightbox-nav prev" aria-label="Previous" onClick={(e)=>{e.stopPropagation(); prevViewer();}}>‹</button>
+          <img className="lightbox-image" src={galleryImages[viewerIndex].src} alt={galleryImages[viewerIndex].alt} onClick={(e)=>e.stopPropagation()} />
+          <button className="lightbox-nav next" aria-label="Next" onClick={(e)=>{e.stopPropagation(); nextViewer();}}>›</button>
+        </div>
+      )}
     </div>
   );
 };
