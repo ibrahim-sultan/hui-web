@@ -5,7 +5,17 @@ import { adminAuth } from '../middleware/auth.js';
 
 const router = express.Router();
 
-const normalizePath = (p) => (typeof p === 'string' ? p.replace(/\\/g, '/') : p);
+const normalizePath = (p) => {
+  if (typeof p !== 'string') return p;
+  let s = p.replace(/\\/g, '/');
+  // strip protocol+host if present
+  s = s.replace(/^https?:\/\/[^/]+\/+/, '');
+  // remove leading slash
+  s = s.replace(/^\/+/, '');
+  // collapse api/uploads to uploads
+  s = s.replace(/^api\/uploads\/?/, 'uploads/');
+  return s;
+};
 
 router.post('/migrations/normalize-paths', adminAuth, async (req, res) => {
   try {

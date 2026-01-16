@@ -28,8 +28,16 @@ const NewsDetail = () => {
           location: p.location || '',
           author: p.authorName || 'Admin',
           authorBio: '',
-          image: `/${String(p.featuredImage || '').replace(/\\/g, '/')}`,
-          images: Array.isArray(p.images) ? p.images.map(img => `/${String(img || '').replace(/\\/g, '/')}`) : [],
+          image: (() => {
+            const raw = String(p.featuredImage || '').replace(/\\/g, '/');
+            const rel = raw.replace(/^https?:\/\/[^/]+\/+/, '').replace(/^\/+/, '');
+            return `/${rel}`;
+          })(),
+          images: Array.isArray(p.images) ? p.images.map(img => {
+            const raw = String(img || '').replace(/\\/g, '/');
+            const rel = raw.replace(/^https?:\/\/[^/]+\/+/, '').replace(/^\/+/, '');
+            return `/${rel}`;
+          }) : [],
           views: p.views || 0,
           readTime: '',
           tags: p.tags || [],
@@ -46,7 +54,11 @@ const NewsDetail = () => {
             title: x.title,
             excerpt: x.excerpt || '',
             date: x.publishedAt || x.createdAt,
-            image: `/${String(x.featuredImage || '').replace(/\\/g, '/')}`
+            image: (() => {
+              const raw = String(x.featuredImage || '').replace(/\\/g, '/');
+              const rel = raw.replace(/^https?:\/\/[^/]+\/+/, '').replace(/^\/+/, '');
+              return `/${rel}`;
+            })()
           }));
         setRelatedNews(related);
       } catch (e) {

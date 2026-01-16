@@ -37,7 +37,11 @@ const NewsEvents = () => {
           time: p.eventTime || '',
           location: p.location || '',
           author: p.authorName || 'Admin',
-          image: `/${String(p.featuredImage || '').replace(/\\/g, '/')}`,
+          image: (() => {
+            const raw = String(p.featuredImage || '').replace(/\\/g, '/');
+            const rel = raw.replace(/^https?:\/\/[^/]+\/+/, '').replace(/^\/+/, '');
+            return rel.startsWith('uploads/') ? `/${rel}` : `/${rel}`;
+          })(),
           views: p.views || 0,
           type: p.category === 'events' ? 'event' : 'news',
           featured: false

@@ -8,5 +8,5 @@ services:
     autoDeploy: true
     disk:
       name: uploads
-      mountPath: api/uploads
+      mountPath: /opt/render/project/src/api/uploads
       sizeGB: 5
