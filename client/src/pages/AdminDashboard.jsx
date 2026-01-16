@@ -37,7 +37,7 @@ const AdminDashboard = () => {
 
   const handleNormalizePaths = async () => {
     try {
-      const resp = await axios.post('http://localhost:4000/api/admin/migrations/normalize-paths', {}, {
+      const resp = await axios.post('/api/admin/migrations/normalize-paths', {}, {
         headers: { Authorization: `Bearer ${token}` }
       });
       alert(`Normalized ${resp.data.updated} posts`);
