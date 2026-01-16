@@ -70,8 +70,8 @@ const authLimiter = rateLimit({
   legacyHeaders: false,
 });
 
-// Apply rate limiting
-app.use(limiter);
+// Apply rate limiting only to API routes (do not rate limit static assets)
+app.use('/api', limiter);
 
 // CORS configuration
 let corsOptions;
