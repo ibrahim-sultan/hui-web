@@ -131,7 +131,7 @@ const AdminDashboard = () => {
         {posts.map(post => (
           <div key={post._id} className="post-card">
             <img 
-              src={`http://localhost:4000/${String(post.featuredImage || '').replace(/\\\\/g, '/')}`} 
+              src={`/${String(post.featuredImage || '').replace(/\\\\/g, '/').replace(/^https?:\/\/[^/]+\/+/, '').replace(/^\/+/, '')}`} 
               alt={post.title} 
               className="post-image"
             />
