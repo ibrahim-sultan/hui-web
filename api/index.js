@@ -42,6 +42,7 @@ app.use(helmet({
       styleSrc: ["'self'", "'unsafe-inline'"],
       scriptSrc: ["'self'"],
       imgSrc: ["'self'", "data:", "https:"],
+      connectSrc: ["'self'", "https:"],
       frameSrc: ["'self'", "https://www.youtube.com", "https://youtube.com"],
       childSrc: ["'self'", "https://www.youtube.com", "https://youtube.com"]
     },
