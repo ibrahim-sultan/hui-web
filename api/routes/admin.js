@@ -20,33 +20,38 @@ const normalizePath = (p) => {
 router.post('/migrations/normalize-paths', adminAuth, async (req, res) => {
   try {
     const posts = await Post.find({});
-    let updated = 0;
+    const result = { processed: posts.length, updated: 0, errors: [] };
     for (const post of posts) {
-      let changed = false;
-      const nf = normalizePath(post.featuredImage);
-      if (nf !== post.featuredImage) {
-        post.featuredImage = nf;
-        changed = true;
-      }
-      if (Array.isArray(post.images) && post.images.length > 0) {
-        const ni = post.images.map(normalizePath);
-        if (ni.some((v, i) => v !== post.images[i])) {
-          post.images = ni;
+      try {
+        let changed = false;
+        const nf = normalizePath(post.featuredImage);
+        if (nf !== post.featuredImage) {
+          post.featuredImage = nf;
           changed = true;
         }
-      }
-      if (!post.category) {
-        post.category = 'news';
-        changed = true;
-      }
-      if (changed) {
-        await post.save();
-        updated++;
+        if (Array.isArray(post.images) && post.images.length > 0) {
+          const ni = post.images.map(normalizePath);
+          if (ni.some((v, i) => v !== post.images[i])) {
+            post.images = ni;
+            changed = true;
+          }
+        }
+        if (!post.category) {
+          post.category = 'news';
+          changed = true;
+        }
+        if (changed) {
+          await post.save();
+          result.updated++;
+        }
+      } catch (err) {
+        result.errors.push({ id: post._id.toString(), title: post.title, message: err.message });
       }
     }
-    res.json({ updated });
+    res.json(result);
   } catch (e) {
-    res.status(500).json({ message: e.message });
+    console.error('Migration error:', e);
+    res.status(500).json({ message: `Migration error: ${e.message}` });
   }
 });
 
