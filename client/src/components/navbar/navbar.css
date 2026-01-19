@@ -20,6 +20,9 @@
   width: 100%;
 }
 
+.navbar-brand {
+  flex-shrink: 0;
+}
 a {
   text-decoration: none !important;
   color: inherit !important;
@@ -143,7 +146,8 @@ a {
 /* Mobile styles */
 @media (max-width: 992px) {
   .navbar-links {
-    gap: 1.5rem;
+    gap: 1rem;
+    flex-wrap: wrap;
   }
   
   .university-name {
@@ -151,7 +155,7 @@ a {
   }
   
   .university-motto {
-    font-size: 0.7rem;
+    display: none;
   }
 }
 
@@ -182,6 +186,8 @@ a {
     opacity: 0;
     pointer-events: none;
     gap: 1rem;
+    max-height: calc(100vh - 80px);
+    overflow-y: auto;
   }
   
   .navbar-links.active {

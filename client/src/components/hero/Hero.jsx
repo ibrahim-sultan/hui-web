@@ -241,6 +241,14 @@ function Hero() {
           </div>
         </div>
 
+      <div className="marquee-bar">
+        <div className="container">
+          <div className="marquee-track">
+            Al-Hikmah University Rankings 2025 • Ranked 1st Private University in Kwara • Top 2nd in Kwara • 3rd in North-Central Nigeria • Times Higher Education Impact Rankings
+          </div>
+        </div>
+      </div>
+
         {/* Academic Programs */}
         <section className="academic-programs">
           <div className="container">
