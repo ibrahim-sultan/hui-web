@@ -110,7 +110,7 @@ function Hero() {
           </div>
           <div className="content-box">
             <h6>Convocation</h6>
-            <p>13th graduation ceremony</p>
+            <p>15th graduation ceremony</p>
           </div>
           <div className="content-box">
             <h6>Vice Chancellor</h6>
