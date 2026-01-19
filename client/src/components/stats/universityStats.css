@@ -127,7 +127,7 @@
 .stat-number {
   font-size: 48px;
   font-weight: 900;
-  color: #333;
+  color: #157646;
   margin-bottom: 10px;
   font-family: 'Arial', sans-serif;
   line-height: 1;
@@ -140,11 +140,15 @@
 
 .stat-label {
   font-size: 16px;
-  color: #666;
-  font-weight: 500;
+  color: #157646;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
   margin: 0;
+  background: rgba(21,118,70,0.08);
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 14px;
 }
 
 .stats-footer {
