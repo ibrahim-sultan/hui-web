@@ -245,7 +245,8 @@ function Hero() {
         <section className="academic-programs">
           <div className="container">
             <div className="programs-grid">
-              <div className="program-card undergraduate" style={{ backgroundImage: `url(${under11})` }}>
+              <div className="program-card undergraduate">
+                <img className="program-bg" src={under11} alt="" aria-hidden="true" />
                 <div className="program-content">
                   <h3>Undergraduate</h3>
                   <p>
@@ -258,7 +259,8 @@ function Hero() {
                 </div>
               </div>
 
-              <div className="program-card postgraduate" style={{ backgroundImage: `url(${post4})` }}>
+              <div className="program-card postgraduate">
+                <img className="program-bg" src={post4} alt="" aria-hidden="true" />
                 <div className="program-content">
                   <h3>Postgraduate & Professional</h3>
                   <p>
@@ -271,7 +273,8 @@ function Hero() {
                 </div>
               </div>
 
-              <div className="program-card scholarships" style={{ backgroundImage: `url(${scholar})` }}>
+              <div className="program-card scholarships">
+                <img className="program-bg" src={scholar} alt="" aria-hidden="true" />
                 <div className="program-content">
                   <h3>Scholarships & Financial Aid</h3>
                   <p>
