@@ -732,23 +732,6 @@
     }
   }
 
-/* Marquee banner */
-.marquee-bar {
-  background: #157646;
-  color: #fff;
-  overflow: hidden;
-  white-space: nowrap;
-}
-.marquee-track {
-  display: inline-block;
-  padding: 0.5rem 0;
-  animation: marquee 18s linear infinite;
-}
-@keyframes marquee {
-  0% { transform: translateX(100%); }
-  100% { transform: translateX(-100%); }
-}
-
 /* University Stats visibility tweaks */
 .university-stats .stat-number {
   color: #157646;

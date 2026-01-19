@@ -46,7 +46,7 @@ a {
 
 
 .logo-img {
-  height: 50px;
+  height: 44px;
   width: auto;
 }
 
@@ -74,8 +74,8 @@ a {
   margin: 0;
   padding: 0;
   transition: all 0.3s ease;
-  gap: 3rem;
-  font-size: 1.2rem;
+  gap: 2rem;
+  font-size: 1rem;
   font-weight: bold;
   line-height: 1.2;
   margin-left: auto; 
@@ -84,7 +84,7 @@ a {
   display: flex;
   color: white;
   text-decoration: none;
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 500;
   transition: color 0.3s;
   padding: 0.5rem 0;
