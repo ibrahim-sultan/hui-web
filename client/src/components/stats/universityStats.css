@@ -139,16 +139,18 @@
 }
 
 .stat-label {
-  font-size: 16px;
+  font-size: 18px;
   color: #157646;
-  font-weight: 700;
+  font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 1px;
   margin: 0;
-  background: rgba(21,118,70,0.08);
+  background: rgba(21,118,70,0.18);
   display: inline-block;
-  padding: 6px 10px;
-  border-radius: 14px;
+  padding: 8px 12px;
+  border-radius: 16px;
+  border: 1px solid rgba(21,118,70,0.35);
+  box-shadow: 0 3px 8px rgba(21,118,70,0.15);
 }
 
 .stats-footer {
