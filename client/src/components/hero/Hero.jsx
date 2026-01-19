@@ -6,6 +6,9 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import slide1 from "../../assets/slide1.jpg";
 import slide2 from "../../assets/slide2.jpg";
 import slide3 from "../../assets/slide3.jpg";
+import under11 from "../../assets/11.jpg";
+import post4 from "../../assets/4.jpg";
+import scholar from "../../assets/scholar.jpg";
 
  import { FaPhotoVideo, FaUniversity, FaBook } from "react-icons/fa";
 import { GiOpenBook, GiBookshelf } from "react-icons/gi";
@@ -242,7 +245,7 @@ function Hero() {
         <section className="academic-programs">
           <div className="container">
             <div className="programs-grid">
-              <div className="program-card undergraduate">
+              <div className="program-card undergraduate" style={{ backgroundImage: `url(${under11})` }}>
                 <div className="program-content">
                   <h3>Undergraduate</h3>
                   <p>
@@ -255,7 +258,7 @@ function Hero() {
                 </div>
               </div>
 
-              <div className="program-card postgraduate">
+              <div className="program-card postgraduate" style={{ backgroundImage: `url(${post4})` }}>
                 <div className="program-content">
                   <h3>Postgraduate & Professional</h3>
                   <p>
@@ -268,7 +271,7 @@ function Hero() {
                 </div>
               </div>
 
-              <div className="program-card scholarships">
+              <div className="program-card scholarships" style={{ backgroundImage: `url(${scholar})` }}>
                 <div className="program-content">
                   <h3>Scholarships & Financial Aid</h3>
                   <p>
