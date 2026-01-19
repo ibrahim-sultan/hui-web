@@ -31,37 +31,37 @@ const EditPost = () => {
       navigate('/login');
       return;
     }
-    fetchPost();
-  }, [id]);
+    (async () => {
+      try {
+        const response = await axios.get(`/api/posts/admin/${id}`, {
+          headers: { Authorization: `Bearer ${token}` }
+        });
+        const post = response.data;
+        if (post) {
+          setFormData({
+            title: post.title,
+            content: post.content,
+            featuredImage: null,
+            images: [],
+            category: post.category || 'news',
+            eventDate: post.eventDate ? post.eventDate.slice(0, 10) : '',
+            eventTime: post.eventTime || '',
+            location: post.location || ''
+          });
+        }
+      } catch (error) {
+        console.error('Error fetching post:', error);
+      } finally {
+        setLoading(false);
+      }
+    })();
+  }, [id, token, user, navigate]);
 
   if (!token || !user || user.role !== 'admin') {
     return null;
   }
 
-  const fetchPost = async () => {
-    try {
-      const response = await axios.get(`/api/posts/admin/${id}`, {
-        headers: { Authorization: `Bearer ${token}` }
-      });
-      const post = response.data;
-      if (post) {
-        setFormData({
-          title: post.title,
-          content: post.content,
-          featuredImage: null,
-          images: [],
-          category: post.category || 'news',
-          eventDate: post.eventDate ? post.eventDate.slice(0, 10) : '',
-          eventTime: post.eventTime || '',
-          location: post.location || ''
-        });
-      }
-    } catch (error) {
-      console.error('Error fetching post:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
+  
 
   const handleChange = (e) => {
     if (e.target.name === 'featuredImage' || e.target.name === 'images') {

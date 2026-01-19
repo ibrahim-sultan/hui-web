@@ -70,7 +70,7 @@ const CreatePost = () => {
         });
       }
 
-      const response = await axios.post('/api/posts', formDataToSend, {
+      await axios.post('/api/posts', formDataToSend, {
         headers: {
           'Authorization': `Bearer ${token}`
         }

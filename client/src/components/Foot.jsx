@@ -1,6 +1,7 @@
 import React from 'react';
 import "./foot.css"
 import { FaArrowRight, FaMapMarkerAlt, FaInfoCircle } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const FootSection = () => {
   return (
@@ -12,15 +13,15 @@ const FootSection = () => {
         <div className="foot-cta">
           <h2 className="foot-cta-title">TAKE THE NEXT STEP</h2>
           <div className="foot-cta-buttons">
-            <a href="#" className="foot-button foot-button-primary">
+            <Link to="/application-process" className="foot-button foot-button-primary">
               <FaArrowRight className="foot-button-icon" /> APPLY NOW
-            </a>
-            <a href="#" className="foot-button foot-button-secondary">
+            </Link>
+            <Link to="/campus" className="foot-button foot-button-secondary">
               <FaMapMarkerAlt className="foot-button-icon" /> VISIT CAMPUS
-            </a>
-            <a href="#" className="foot-button foot-button-secondary">
+            </Link>
+            <Link to="/contact" className="foot-button foot-button-secondary">
               <FaInfoCircle className="foot-button-icon" /> REQUEST INFO
-            </a>
+            </Link>
           </div>
         </div>
 
@@ -34,9 +35,9 @@ const FootSection = () => {
 
         {/* Policies */}
         <div className="foot-policies">
-          <a href="#" className="foot-policy-link">TERMS OF SERVICE</a>
-          <a href="#" className="foot-policy-link">PRIVACY POLICY</a>
-          <a href="#" className="foot-policy-link">NON-DISCRIMINATION POLICY</a>
+          <Link to="/about-us" className="foot-policy-link">TERMS OF SERVICE</Link>
+          <Link to="/about-us" className="foot-policy-link">PRIVACY POLICY</Link>
+          <Link to="/about-us" className="foot-policy-link">NON-DISCRIMINATION POLICY</Link>
         </div>
       </div>
     </section>

@@ -15,14 +15,14 @@ const UniversityStats = () => {
   const sectionRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
 
-  const targetStats = {
+  const targetStatsRef = useRef({
     students: 8500,
     faculty: 350,
     programs: 75,
     graduates: 15000,
     faculties: 9,
     years: 23
-  };
+  });
 
   const stats = [
     {
@@ -101,17 +101,17 @@ const UniversityStats = () => {
         const easeOutProgress = 1 - Math.pow(1 - progress, 3);
 
         setAnimatedStats({
-          students: Math.floor(targetStats.students * easeOutProgress),
-          faculty: Math.floor(targetStats.faculty * easeOutProgress),
-          programs: Math.floor(targetStats.programs * easeOutProgress),
-          graduates: Math.floor(targetStats.graduates * easeOutProgress),
-          faculties: Math.floor(targetStats.faculties * easeOutProgress),
-          years: Math.floor(targetStats.years * easeOutProgress)
+          students: Math.floor(targetStatsRef.current.students * easeOutProgress),
+          faculty: Math.floor(targetStatsRef.current.faculty * easeOutProgress),
+          programs: Math.floor(targetStatsRef.current.programs * easeOutProgress),
+          graduates: Math.floor(targetStatsRef.current.graduates * easeOutProgress),
+          faculties: Math.floor(targetStatsRef.current.faculties * easeOutProgress),
+          years: Math.floor(targetStatsRef.current.years * easeOutProgress)
         });
 
         if (step >= steps) {
           clearInterval(timer);
-          setAnimatedStats(targetStats);
+          setAnimatedStats(targetStatsRef.current);
         }
       }, stepDuration);
 

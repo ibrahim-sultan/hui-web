@@ -29,6 +29,7 @@ import InternationalStudents from "./pages/InternationalStudents";
 import StudentServices from "./pages/StudentServices";
 import Research from "./pages/Research";
 import Library from "./pages/Library";
+import UniversityMedia from "./pages/UniversityMedia";
 
 function App() {
   return (
@@ -63,6 +64,7 @@ function App() {
             
             {/* Student Life */}
             <Route path="/student-services" element={<StudentServices />} />
+            <Route path="/university-media" element={<UniversityMedia />} />
             
             {/* News & Communication */}
             <Route path="/news" element={<NewsEvents />} />

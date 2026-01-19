@@ -352,9 +352,9 @@ const InternationalStudents = () => {
               <a href="/contact" className="cta-btn secondary">
                 Contact Us
               </a>
-              <a href="#" className="cta-btn secondary">
+              <button type="button" className="cta-btn secondary">
                 Download Brochure
-              </a>
+              </button>
             </div>
           </div>
         </div>

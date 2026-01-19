@@ -1,6 +1,7 @@
 import React from "react";
 import "./footer.css"
 import { FaFacebookF, FaGoogle, FaLinkedinIn, FaTwitter, FaYoutube, FaInstagram } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -9,8 +10,8 @@ const Footer = () => {
         <div className="footer-brand">
           <h2>AL-HIKMAH</h2>
           <div className="footer-links">
-            <a href="#">PLAN A VISIT</a>
-            <a href="#">CONTACT</a>
+            <Link to="/campus">PLAN A VISIT</Link>
+            <Link to="/contact">CONTACT</Link>
           </div>
           <p>+234 703 275 4666</p>
         </div>
@@ -29,11 +30,11 @@ const Footer = () => {
       </div>
 
       <div className="footer-bottom">
-        <a href="#">DIRECTORY</a>
-        <a href="#">OFFICES & RESOURCES</a>
-        <a href="#">COLLEGE STORE</a>
-        <a href="#">EMPLOYMENT</a>
-        <a href="#">VIRTUAL TOUR</a>
+        <Link to="/about-us">DIRECTORY</Link>
+        <Link to="/campus">OFFICES & RESOURCES</Link>
+        <Link to="/">COLLEGE STORE</Link>
+        <Link to="/contact">EMPLOYMENT</Link>
+        <Link to="/campus">VIRTUAL TOUR</Link>
       </div>
     </footer>
   );

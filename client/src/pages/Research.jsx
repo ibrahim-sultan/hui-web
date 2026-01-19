@@ -358,8 +358,8 @@ const Research = () => {
             
             <div className="cta-buttons">
               <a href="/contact" className="cta-btn primary">Contact Research Office</a>
-              <a href="#" className="cta-btn secondary">Research Proposals</a>
-              <a href="#" className="cta-btn secondary">Funding Opportunities</a>
+              <button type="button" className="cta-btn secondary">Research Proposals</button>
+              <button type="button" className="cta-btn secondary">Funding Opportunities</button>
             </div>
           </div>
         </div>

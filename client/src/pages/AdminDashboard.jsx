@@ -50,6 +50,10 @@ const AdminDashboard = () => {
 
   const [homeVideoUrl, setHomeVideoUrl] = useState('');
   const [homeVideoActive, setHomeVideoActive] = useState(false);
+  const [mediaItems, setMediaItems] = useState([]);
+  const [mediaTitle, setMediaTitle] = useState('');
+  const [mediaDesc, setMediaDesc] = useState('');
+  const [mediaFile, setMediaFile] = useState(null);
   useEffect(() => {
     const loadHomeVideo = async () => {
       try {
@@ -59,6 +63,13 @@ const AdminDashboard = () => {
       } catch {}
     };
     loadHomeVideo();
+    const loadMedia = async () => {
+      try {
+        const res = await axios.get('/api/media');
+        setMediaItems(res.data || []);
+      } catch {}
+    };
+    loadMedia();
   }, []);
   const saveHomeVideo = async () => {
     try {
@@ -69,6 +80,44 @@ const AdminDashboard = () => {
     } catch (e) {
       console.error('Home video update error:', e);
       alert(e.response?.data?.message || (e.message || 'Failed to update home video'));
+    }
+  };
+
+  const uploadMedia = async () => {
+    if (!mediaFile) {
+      alert('Select an image or video file');
+      return;
+    }
+    try {
+      const form = new FormData();
+      form.append('file', mediaFile);
+      if (mediaTitle) form.append('title', mediaTitle);
+      if (mediaDesc) form.append('description', mediaDesc);
+      const res = await axios.post('/api/media', form, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+          Authorization: `Bearer ${token}`
+        }
+      });
+      setMediaItems(prev => [res.data, ...prev]);
+      setMediaTitle('');
+      setMediaDesc('');
+      setMediaFile(null);
+      alert('Media uploaded');
+    } catch (e) {
+      alert(e.response?.data?.message || 'Upload failed');
+    }
+  };
+
+  const deleteMedia = async (id) => {
+    if (!window.confirm('Delete this media item?')) return;
+    try {
+      await axios.delete(`/api/media/${id}`, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      setMediaItems(prev => prev.filter(m => m._id !== id));
+    } catch (e) {
+      alert(e.response?.data?.message || 'Delete failed');
     }
   };
 
@@ -124,6 +173,50 @@ const AdminDashboard = () => {
             <input type="checkbox" checked={homeVideoActive} onChange={(e) => setHomeVideoActive(e.target.checked)} /> Active
           </label>
           <button onClick={saveHomeVideo} className="btn btn-primary">Save Video</button>
+        </div>
+        <div className="admin-media" style={{ marginTop: 30 }}>
+          <h3>University Media</h3>
+          <p>Upload images or videos to appear on the University Media page.</p>
+          <div style={{ display: 'grid', gap: 10, maxWidth: 600 }}>
+            <input
+              type="text"
+              placeholder="Title (optional)"
+              value={mediaTitle}
+              onChange={(e)=>setMediaTitle(e.target.value)}
+            />
+            <textarea
+              placeholder="Description (optional)"
+              value={mediaDesc}
+              onChange={(e)=>setMediaDesc(e.target.value)}
+              rows={3}
+            />
+            <input
+              type="file"
+              accept="image/*,video/*"
+              onChange={(e)=>setMediaFile(e.target.files?.[0] || null)}
+            />
+            <button onClick={uploadMedia} className="btn btn-primary">Upload Media</button>
+          </div>
+          <div style={{ marginTop: 20 }}>
+            <h4>Existing Media</h4>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 12 }}>
+              {mediaItems.map(item => (
+                <div key={item._id} style={{ background: '#fff', border: '1px solid #eee', borderRadius: 8, padding: 8 }}>
+                  <div style={{ height: 120, overflow: 'hidden', borderRadius: 6, marginBottom: 8 }}>
+                    {item.type === 'image' ? (
+                      <img src={`/${item.path}`} alt={item.title || 'Media'} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                    ) : (
+                      <video src={`/${item.path}`} style={{ width: '100%', height: '100%', objectFit: 'cover' }} controls />
+                    )}
+                  </div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <span style={{ fontSize: 12, color: '#157646', fontWeight: 700 }}>{item.type}</span>
+                    <button className="btn btn-secondary" onClick={()=>deleteMedia(item._id)}>Delete</button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
 

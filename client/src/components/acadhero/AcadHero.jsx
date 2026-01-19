@@ -1,6 +1,7 @@
 import "./acadhero.css";
 import { FaFacebookF, FaTwitter, FaInstagram, FaYoutube, FaFlickr, FaLinkedinIn, FaChevronDown, FaChevronUp  } from "react-icons/fa";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 
 
@@ -36,12 +37,12 @@ function AcadHero() {
 
       {open && (
         <ul className="quick-links-list">
-          <li><a href="#">Academic Calendar</a></li>
-          <li><a href="#">Campus Map</a></li>
-          <li><a href="#">HUI Library</a></li>
-          <li><a href="#">Academic Catalog</a></li>
-          <li><a href="#">About Us</a></li>
-          <li><a href="#">COVID-19 Information</a></li>
+          <li><Link to="/programs">Academic Calendar</Link></li>
+          <li><Link to="/campus">Campus Map</Link></li>
+          <li><Link to="/library">HUI Library</Link></li>
+          <li><Link to="/programs">Academic Catalog</Link></li>
+          <li><Link to="/about-us">About Us</Link></li>
+          <li><Link to="/about-us">COVID-19 Information</Link></li>
         </ul>
       )}
     </div>
@@ -58,29 +59,29 @@ function AcadHero() {
       {/* CARD SECTION */}
 
     
-        <div class="programs-grid1">
-          <div class="program-card1 program1">
-            <div class="program-content1">
+        <div className="programs-grid1">
+          <div className="program-card1 program1">
+            <div className="program-content1">
               <h3>Undergraduate Programs</h3>
             <p>
               
               We offer more than 40 majours & minors
               </p>
-              <a href="#" class="learn-more-btn">
-                EXPLORE PROGRAMS <span class="arrow">→</span>
-              </a>
+              <Link to="/programs" className="learn-more-btn">
+                EXPLORE PROGRAMS <span className="arrow">→</span>
+              </Link>
             </div>
           </div>
 
-          <div class="program-card1 program2">
-            <div class="program-content1">
+          <div className="program-card1 program2">
+            <div className="program-content1">
               <h3>Graduate & Online</h3>
               <p>
                 Complete your courses  100% online - anytime, anywhere.
               </p>
-              <a href="#" class="learn-more-btn">
-                EXPLORE PROGRAMS <span class="arrow">→</span>
-              </a>
+              <Link to="/programs" className="learn-more-btn">
+                EXPLORE PROGRAMS <span className="arrow">→</span>
+              </Link>
             </div>
           </div>
         </div>
@@ -90,19 +91,19 @@ function AcadHero() {
          <div className="visit-card">
         <h2><span className="gray-text">VISIT</span> <span className="blue-text">HUI</span></h2>
         <p>The best way to determine whether HUI is the place for you is to visit.</p>
-        <a href="#" className="visit-link">PLAN MY VISIT NOW →</a>
+        <Link to="/campus" className="visit-link">PLAN MY VISIT NOW →</Link>
       </div>
     </div>
 
     {/* SOCIAL MEDIA ICON  */}
   
       <div className="social-bar">
-      <a href="#"><FaFacebookF /></a>
-      <a href="#"><FaTwitter /></a>
-      <a href="#"><FaInstagram /></a>
-      <a href="#"><FaYoutube /></a>
-      <a href="#"><FaFlickr /></a>
-      <a href="#"><FaLinkedinIn /></a>
+      <button type="button"><FaFacebookF /></button>
+      <button type="button"><FaTwitter /></button>
+      <button type="button"><FaInstagram /></button>
+      <button type="button"><FaYoutube /></button>
+      <button type="button"><FaFlickr /></button>
+      <button type="button"><FaLinkedinIn /></button>
     </div>
     </div>
   );

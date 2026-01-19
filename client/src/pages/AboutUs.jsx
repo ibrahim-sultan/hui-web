@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FaGraduationCap, FaUsers, FaGlobe, FaAward, FaEye, FaBullseye, FaHeart } from 'react-icons/fa';
+import { FaGraduationCap, FaUsers, FaGlobe, FaEye, FaBullseye, FaHeart } from 'react-icons/fa';
 import './aboutUs.css';
 
 const AboutUs = () => {

@@ -13,6 +13,7 @@ import multer from 'multer';
 import path from 'path';
 import fs from 'fs';
 import postRoutes from "./routes/posts.js";
+import mediaRoutes from "./routes/media.js";
 import adminRoutes from "./routes/admin.js";
 import Setting from "./models/Setting.js";
 
@@ -258,6 +259,7 @@ app.post('/api/login', authLimiter, validateLogin, handleValidationErrors, async
 // Post routes
 app.use('/api/posts', postRoutes);
 app.use('/api/admin', adminRoutes);
+app.use('/api/media', mediaRoutes);
 
 // Serve client build in production (SPA fallback)
 const clientBuildPath = path.join(process.cwd(), '../client/build');

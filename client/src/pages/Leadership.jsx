@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaUser, FaEnvelope, FaPhone, FaGraduationCap, FaBuilding } from 'react-icons/fa';
+import { FaEnvelope, FaPhone, FaGraduationCap, FaBuilding } from 'react-icons/fa';
 import './leadership.css';
 
 const Leadership = () => {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaGraduationCap, FaAward, FaBook, FaUsers, FaGlobe, FaQuoteLeft } from 'react-icons/fa';
+import { FaGraduationCap, FaBook, FaUsers, FaGlobe, FaQuoteLeft } from 'react-icons/fa';
 import './viceChancellor.css';
 
 const ViceChancellor = () => {

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+ import React from "react";
 import "./hero.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
@@ -7,10 +7,11 @@ import slide1 from "../../assets/slide1.jpg";
 import slide2 from "../../assets/slide2.jpg";
 import slide3 from "../../assets/slide3.jpg";
 
-import { FaPhotoVideo, FaSignInAlt, FaUserPlus, FaUniversity, FaStar, FaGraduationCap, FaUsers, FaBook, FaCalendarAlt } from "react-icons/fa";
+ import { FaPhotoVideo, FaUniversity, FaBook } from "react-icons/fa";
 import { GiOpenBook, GiBookshelf } from "react-icons/gi";
 import { IoMdSchool } from "react-icons/io";
 import { HiAcademicCap } from "react-icons/hi";
+import { Link } from "react-router-dom";
 
 function Hero() {
   return (
@@ -203,36 +204,36 @@ function Hero() {
             </div>
 
             <div className="col-lg-6">
-              <div className="download-grid">
-                <div className="download-box">
-                  <FaPhotoVideo className="media-icon" />
-                  <h4>University Media</h4>
-                  <div className="download-content">
-                    <a href="#">University media</a>
-                  </div>
+                <div className="download-grid">
+                  <Link to="/university-media" className="download-box">
+                    <FaPhotoVideo className="media-icon" />
+                    <h4>University Media</h4>
+                    <div className="download-content">
+                      <span>Photos & Videos</span>
+                    </div>
+                  </Link>
+                  <a href="https://cdl.alhikmahuniversity.edu.ng/" target="_blank" rel="noopener noreferrer" className="download-box">
+                    <GiOpenBook className="media-icon" />
+                    <h4>Open Education</h4>
+                    <div className="download-content">
+                      <span>Educational Materials</span>
+                    </div>
+                  </a>
+                  <a href="https://alhikmahuniversity.edu.ng/new/" target="_blank" rel="noopener noreferrer" className="download-box">
+                    <GiBookshelf className="media-icon" />
+                    <h4>University Library</h4>
+                    <div className="download-content">
+                      <span>Library Resources</span>
+                    </div>
+                  </a>
+                  <Link to="/programs" className="download-box">
+                    <IoMdSchool className="media-icon" />
+                    <h4>Academic Programs</h4>
+                    <div className="download-content">
+                      <span>Undergraduate & Postgraduate</span>
+                    </div>
+                  </Link>
                 </div>
-                <div className="download-box">
-                  <GiOpenBook className="media-icon" />
-                  <h4>Open Education</h4>
-                  <div className="download-content">
-                    <a href="#">Educational Materials</a>
-                  </div>
-                </div>
-                <div className="download-box">
-                  <GiBookshelf className="media-icon" />
-                  <h4>University Library</h4>
-                  <div className="download-content">
-                    <a href="#">Library Resources</a>
-                  </div>
-                </div>
-                <div className="download-box">
-                  <IoMdSchool className="media-icon" />
-                  <h4>Academic Programs</h4>
-                  <div className="download-content">
-                    <a href="#">Undergraduate & Postgraduate</a>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>
@@ -248,9 +249,9 @@ function Hero() {
                     We are offering our students a diverse spectrum of courses
                     and enriching experiences.
                   </p>
-                  <a href="#" className="learn-more-btn">
+                  <Link to="/programs" className="learn-more-btn">
                     Learn more <span className="arrow">→</span>
-                  </a>
+                  </Link>
                 </div>
               </div>
 
@@ -261,9 +262,9 @@ function Hero() {
                     Whether you are continuing your education or professional
                     development.
                   </p>
-                  <a href="#" className="learn-more-btn">
+                  <Link to="/programs" className="learn-more-btn">
                     Learn more <span className="arrow">→</span>
-                  </a>
+                  </Link>
                 </div>
               </div>
 
@@ -274,9 +275,9 @@ function Hero() {
                     Agricultural Science is one of our newest accredited courses
                     with funding options.
                   </p>
-                  <a href="#" className="learn-more-btn">
+                  <Link to="/programs" className="learn-more-btn">
                     Learn more <span className="arrow">→</span>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>

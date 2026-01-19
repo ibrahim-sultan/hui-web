@@ -1,4 +1,5 @@
 import "./about.css";
+import { Link } from "react-router-dom";
 import vc from "../../assets/vc.jpg";
 import comprehensive from "../../assets/comprehensive.jpg"
 import learning from "../../assets/learning.jpg"
@@ -37,25 +38,25 @@ function About() {
           <button className="read-more">READ MORE &gt;</button>
         </div>
         <div className="about-links">
-          <a className="link-button green" href="#">
+          <Link className="link-button green" to="/application-process">
             🎓 Apply
-          </a>
-          <a className="link-button" href="#">
+          </Link>
+          <Link className="link-button" to="/campus">
             ✈ Visit Campus
-          </a>
-          <a className="link-button" href="#">
+          </Link>
+          <Link className="link-button" to="/student-services">
             👤 Student
-          </a>
-          <a className="link-button" href="#">
+          </Link>
+          <Link className="link-button" to="/library">
             🏫 Library
-          </a>
-          <a className="link-button" href="#">
+          </Link>
+          <Link className="link-button" to="/admission">
             🎓 Scholarship
-          </a>
+          </Link>
          
-          <a className="link-button" href="#">
+          <Link className="link-button" to="/contact">
             ❓ FAQ
-          </a>
+          </Link>
         </div>
       </div>
 

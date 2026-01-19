@@ -503,10 +503,10 @@ const ApplicationProcess = () => {
                 <FaFileAlt />
                 View Requirements
               </a>
-              <a href="#" className="cta-btn secondary">
+              <button type="button" className="cta-btn secondary">
                 <FaDownload />
                 Download Brochure
-              </a>
+              </button>
             </div>
           </div>
         </div>
