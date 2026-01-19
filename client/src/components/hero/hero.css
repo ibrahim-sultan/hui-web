@@ -39,18 +39,24 @@
   .carousel-caption {
     bottom: 30%;
     text-align: left;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.6);
     padding: 20px;
     border-radius: 5px;
+    color: #fff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
   }
   
   .carousel-caption h5 {
     font-size:30px;
+    color: #fff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
     font-weight: bold;
   }
   
   .carousel-caption p {
     font-size:25px;
+    color: #fff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
   }
   
   

@@ -160,24 +160,24 @@ const AdminDashboard = () => {
             Logout
           </button>
         </div>
-        <div className="admin-video-config" style={{ marginTop: 20 }}>
-          <h3>Homepage Video</h3>
+        <div className="section-card admin-video-config">
+          <h3 className="section-title">Homepage Video</h3>
           <input
             type="text"
             placeholder="YouTube link (e.g., https://youtu.be/...)"
             value={homeVideoUrl}
             onChange={(e) => setHomeVideoUrl(e.target.value)}
-            style={{ width: '100%', padding: 10, marginBottom: 10 }}
+            className="video-url-input"
           />
-          <label style={{ display: 'block', marginBottom: 10 }}>
+          <label className="video-active-label">
             <input type="checkbox" checked={homeVideoActive} onChange={(e) => setHomeVideoActive(e.target.checked)} /> Active
           </label>
           <button onClick={saveHomeVideo} className="btn btn-primary">Save Video</button>
         </div>
-        <div className="admin-media" style={{ marginTop: 30 }}>
-          <h3>University Media</h3>
-          <p>Upload images or videos to appear on the University Media page.</p>
-          <div style={{ display: 'grid', gap: 10, maxWidth: 600 }}>
+        <div className="section-card admin-media">
+          <h3 className="section-title">University Media</h3>
+          <p className="section-subtitle">Upload images or videos to appear on the University Media page.</p>
+          <div className="form-grid">
             <input
               type="text"
               placeholder="Title (optional)"
@@ -197,20 +197,20 @@ const AdminDashboard = () => {
             />
             <button onClick={uploadMedia} className="btn btn-primary">Upload Media</button>
           </div>
-          <div style={{ marginTop: 20 }}>
-            <h4>Existing Media</h4>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 12 }}>
+          <div className="existing-media">
+            <h4 className="section-title">Existing Media</h4>
+            <div className="media-grid">
               {mediaItems.map(item => (
-                <div key={item._id} style={{ background: '#fff', border: '1px solid #eee', borderRadius: 8, padding: 8 }}>
-                  <div style={{ height: 120, overflow: 'hidden', borderRadius: 6, marginBottom: 8 }}>
+                <div key={item._id} className="media-card">
+                  <div className="media-thumb">
                     {item.type === 'image' ? (
                       <img src={`/${item.path}`} alt={item.title || 'Media'} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                     ) : (
                       <video src={`/${item.path}`} style={{ width: '100%', height: '100%', objectFit: 'cover' }} controls />
                     )}
                   </div>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <span style={{ fontSize: 12, color: '#157646', fontWeight: 700 }}>{item.type}</span>
+                  <div className="media-card-footer">
+                    <span className="media-type">{item.type}</span>
                     <button className="btn btn-secondary" onClick={()=>deleteMedia(item._id)}>Delete</button>
                   </div>
                 </div>

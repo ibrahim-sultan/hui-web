@@ -21,6 +21,25 @@ body {
   background-color: #ffffff;
 }
 
+:where(img, video) {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+iframe {
+  max-width: 100%;
+  display: block;
+}
+
+/* Mobile container spacing fix under fixed navbar */
+@media (max-width: 768px) {
+  .container {
+    padding-left: var(--spacing-sm);
+    padding-right: var(--spacing-sm);
+  }
+}
+
 /* University Color Scheme */
 :root {
   --primary-color: #e74c3c;
