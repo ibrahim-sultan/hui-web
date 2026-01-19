@@ -5,7 +5,7 @@ import Faculty from '../components/faculty/Faculty';
 
 function Academic() {
   return (
-    <div className="academic-page">
+    <div className="academic-page" style={{ marginTop: 0 }}>
       <AcadHero />
       <About />
       
