@@ -54,6 +54,7 @@ const AdminDashboard = () => {
   const [mediaTitle, setMediaTitle] = useState('');
   const [mediaDesc, setMediaDesc] = useState('');
   const [mediaFile, setMediaFile] = useState(null);
+  const [uploadingMedia, setUploadingMedia] = useState(false);
   useEffect(() => {
     const loadHomeVideo = async () => {
       try {
@@ -89,6 +90,7 @@ const AdminDashboard = () => {
       return;
     }
     try {
+      setUploadingMedia(true);
       const form = new FormData();
       form.append('file', mediaFile);
       if (mediaTitle) form.append('title', mediaTitle);
@@ -104,8 +106,21 @@ const AdminDashboard = () => {
       setMediaDesc('');
       setMediaFile(null);
       alert('Media uploaded');
+      navigate('/university-media');
     } catch (e) {
-      alert(e.response?.data?.message || 'Upload failed');
+      const status = e.response?.status;
+      const msg = e.response?.data?.message || e.message || 'Upload failed';
+      if (status === 401) {
+        alert('Authentication required. Please log in again.');
+        navigate('/login');
+      } else if (status === 403) {
+        alert('Admin access required to upload media.');
+      } else {
+        alert(msg);
+      }
+    }
+    finally {
+      setUploadingMedia(false);
     }
   };
 
@@ -198,7 +213,9 @@ const AdminDashboard = () => {
             accept="image/*,video/*"
             onChange={(e)=>setMediaFile(e.target.files?.[0] || null)}
           />
-          <button onClick={uploadMedia} className="btn btn-primary">Upload Media</button>
+          <button onClick={uploadMedia} className="btn btn-primary" disabled={uploadingMedia}>
+            {uploadingMedia ? 'Uploading...' : 'Upload Media'}
+          </button>
         </div>
         <div className="existing-media">
           <h4 className="section-title">Existing Media</h4>
