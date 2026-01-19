@@ -55,6 +55,7 @@ const AdminDashboard = () => {
   const [mediaDesc, setMediaDesc] = useState('');
   const [mediaFile, setMediaFile] = useState(null);
   const [uploadingMedia, setUploadingMedia] = useState(false);
+  const [uploadProgress, setUploadProgress] = useState(0);
   useEffect(() => {
     const loadHomeVideo = async () => {
       try {
@@ -99,6 +100,12 @@ const AdminDashboard = () => {
         headers: {
           'Content-Type': 'multipart/form-data',
           Authorization: `Bearer ${token}`
+        },
+        timeout: 60000,
+        onUploadProgress: (progressEvent) => {
+          const total = progressEvent.total || progressEvent.loaded;
+          const percent = total ? Math.round((progressEvent.loaded * 100) / total) : 0;
+          setUploadProgress(percent);
         }
       });
       setMediaItems(prev => [res.data, ...prev]);
@@ -121,6 +128,7 @@ const AdminDashboard = () => {
     }
     finally {
       setUploadingMedia(false);
+      setUploadProgress(0);
     }
   };
 
@@ -214,7 +222,7 @@ const AdminDashboard = () => {
             onChange={(e)=>setMediaFile(e.target.files?.[0] || null)}
           />
           <button onClick={uploadMedia} className="btn btn-primary" disabled={uploadingMedia}>
-            {uploadingMedia ? 'Uploading...' : 'Upload Media'}
+            {uploadingMedia ? `Uploading... ${uploadProgress}%` : 'Upload Media'}
           </button>
         </div>
         <div className="existing-media">
