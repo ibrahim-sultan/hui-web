@@ -7,6 +7,8 @@ function UniversityMedia() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [filter, setFilter] = useState('all');
+  const [viewerOpen, setViewerOpen] = useState(false);
+  const [viewerIndex, setViewerIndex] = useState(0);
 
   useEffect(() => {
     const fetchMedia = async () => {
@@ -23,6 +25,8 @@ function UniversityMedia() {
   }, []);
 
   const filtered = media.filter(m => filter === 'all' || m.type === filter);
+  const openViewer = (idx) => { setViewerIndex(idx); setViewerOpen(true); };
+  const closeViewer = () => setViewerOpen(false);
 
   return (
     <div className="university-media-page">
@@ -44,9 +48,9 @@ function UniversityMedia() {
           {error && <div className="error">{error}</div>}
           {!loading && !error && (
             <div className="media-grid">
-              {filtered.map((item) => (
+              {filtered.map((item, idx) => (
                 <div key={item._id} className="media-card">
-                  <div className="media-thumb">
+                  <div className="media-thumb" onClick={() => openViewer(idx)}>
                     {item.type === 'image' ? (
                       <img src={`/${item.path}`} alt={item.title || 'Media'} />
                     ) : (
@@ -64,6 +68,28 @@ function UniversityMedia() {
           )}
         </div>
       </section>
+      
+      {viewerOpen && (
+        <div className="media-viewer-overlay" onClick={closeViewer}>
+          <div className="media-viewer-content" onClick={(e) => e.stopPropagation()}>
+            {filtered[viewerIndex]?.type === 'image' ? (
+              <img
+                src={`/${filtered[viewerIndex].path}`}
+                alt={filtered[viewerIndex].title || 'Media'}
+                className="media-viewer-img"
+              />
+            ) : (
+              <video
+                controls
+                autoPlay
+                src={`/${filtered[viewerIndex].path}`}
+                className="media-viewer-video"
+              />
+            )}
+            <button className="media-viewer-close" onClick={closeViewer}>×</button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
