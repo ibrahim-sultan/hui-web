@@ -2,10 +2,16 @@ import React, { useState } from 'react';
 import { FaClipboardList, FaCreditCard, FaFileAlt, FaCheckCircle, FaCalendarAlt, FaDownload, FaExternalLinkAlt, FaUserGraduate } from 'react-icons/fa';
 import './applicationProcess.css';
 
-const ApplicationProcess = () => {
+const ApplicationProcess = ({
+  theme = 'green',
+  removeUndergradStepTitles,
+  applicationFees: feesOverride,
+  paymentMethods: paymentMethodsOverride,
+  removeImportantDateEvents
+}) => {
   const [activeTab, setActiveTab] = useState('undergraduate');
 
-  const undergraduateSteps = [
+  const defaultUndergraduateSteps = [
     {
       step: 1,
       title: "JAMB Registration",
@@ -235,13 +241,13 @@ const ApplicationProcess = () => {
     ]
   };
 
-  const applicationFees = {
+  const defaultApplicationFees = {
     undergraduate: "₦2,000",
     masters: "₦5,000",
     phd: "₦8,000"
   };
 
-  const importantDates = [
+  const defaultImportantDates = [
     { event: "Application Opens", date: "March 1st", category: "deadline" },
     { event: "JAMB Registration Ends", date: "April 15th", category: "deadline" },
     { event: "Application Deadline", date: "July 31st", category: "deadline" },
@@ -252,8 +258,26 @@ const ApplicationProcess = () => {
     { event: "Matriculation Ceremony", date: "November 15th", category: "event" }
   ];
 
+  const applicationFees = feesOverride ? { ...defaultApplicationFees, ...feesOverride } : defaultApplicationFees;
+
+  let undergraduateSteps = defaultUndergraduateSteps;
+  if (removeUndergradStepTitles && Array.isArray(removeUndergradStepTitles)) {
+    undergraduateSteps = defaultUndergraduateSteps
+      .filter(s => !removeUndergradStepTitles.includes(s.title))
+      .map((s, idx) => ({ ...s, step: idx + 1 }));
+  }
+
+  let importantDates = defaultImportantDates;
+  if (removeImportantDateEvents && Array.isArray(removeImportantDateEvents)) {
+    importantDates = defaultImportantDates.filter(d => !removeImportantDateEvents.includes(d.event));
+  }
+
+  const paymentMethods = paymentMethodsOverride && Array.isArray(paymentMethodsOverride)
+    ? paymentMethodsOverride
+    : ["Bank Transfer", "Online Payment", "Bank Draft", "Mobile Money"];
+
   return (
-    <div className="application-process-page">
+    <div className={`application-process-page ${theme === 'green' ? 'green-theme' : ''}`}>
       {/* Hero Section */}
       <section className="process-hero">
         <div className="hero-overlay"></div>
@@ -425,10 +449,9 @@ const ApplicationProcess = () => {
           <div className="payment-info">
             <h4>Payment Methods</h4>
             <div className="payment-methods">
-              <span>Bank Transfer</span>
-              <span>Online Payment</span>
-              <span>Bank Draft</span>
-              <span>Mobile Money</span>
+              {paymentMethods.map((m, i) => (
+                <span key={i}>{m}</span>
+              ))}
             </div>
           </div>
         </div>
