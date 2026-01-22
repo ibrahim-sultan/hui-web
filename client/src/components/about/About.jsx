@@ -35,7 +35,7 @@ function About() {
             Islamic philosophy – rare to come by in contemporary institutions of
             higher learning, especially in Nigeria.
           </p>
-          <button className="read-more">READ MORE &gt;</button>
+          <Link className="read-more" to="/vice-chancellor">READ MORE &gt;</Link>
         </div>
         <div className="about-links">
           <Link className="link-button green" to="/application-process">
