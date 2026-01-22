@@ -1,7 +1,6 @@
 import React from 'react';
 import { FaGraduationCap, FaFileAlt, FaCheckCircle, FaExclamationTriangle } from 'react-icons/fa';
 import './admissionRequirements.css';
-import ApplicationProcess from './ApplicationProcess';
 
 const AdmissionRequirements = () => {
   const undergraduateReqs = [
@@ -71,7 +70,6 @@ const AdmissionRequirements = () => {
 
   return (
     <div className="admission-requirements-page">
-      <ApplicationProcess />
       {/* Hero Section */}
       <section className="requirements-hero">
         <div className="hero-overlay"></div>

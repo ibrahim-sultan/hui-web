@@ -243,38 +243,25 @@ const ApplicationProcess = ({
 
   const defaultApplicationFees = {
     undergraduate: "₦2,000",
-    masters: "₦5,000",
-    phd: "₦8,000"
+    masters: "₦25,000",
+    phd: "₦25,000"
   };
 
-  const defaultImportantDates = [
-    { event: "Application Opens", date: "March 1st", category: "deadline" },
-    { event: "JAMB Registration Ends", date: "April 15th", category: "deadline" },
-    { event: "Application Deadline", date: "July 31st", category: "deadline" },
-    { event: "Post-UTME Screening", date: "August 1st - 15th", category: "exam" },
-    { event: "First Admission List", date: "August 30th", category: "result" },
-    { event: "Document Verification", date: "September 1st - 30th", category: "process" },
-    { event: "School Fees Deadline", date: "October 31st", category: "deadline" },
-    { event: "Matriculation Ceremony", date: "November 15th", category: "event" }
-  ];
+  const defaultImportantDates = [];
 
   const applicationFees = feesOverride ? { ...defaultApplicationFees, ...feesOverride } : defaultApplicationFees;
 
   let undergraduateSteps = defaultUndergraduateSteps;
-  if (removeUndergradStepTitles && Array.isArray(removeUndergradStepTitles)) {
-    undergraduateSteps = defaultUndergraduateSteps
-      .filter(s => !removeUndergradStepTitles.includes(s.title))
-      .map((s, idx) => ({ ...s, step: idx + 1 }));
-  }
+  const stepsToRemove = ["JAMB Registration", "JAMB UTME Examination", "Post-UTME Screening", "Admission List Release"];
+  undergraduateSteps = defaultUndergraduateSteps
+    .filter(s => !stepsToRemove.includes(s.title))
+    .map((s, idx) => ({ ...s, step: idx + 1 }));
 
   let importantDates = defaultImportantDates;
-  if (removeImportantDateEvents && Array.isArray(removeImportantDateEvents)) {
-    importantDates = defaultImportantDates.filter(d => !removeImportantDateEvents.includes(d.event));
-  }
 
   const paymentMethods = paymentMethodsOverride && Array.isArray(paymentMethodsOverride)
     ? paymentMethodsOverride
-    : ["Bank Transfer", "Online Payment", "Bank Draft", "Mobile Money"];
+    : ["Online Payment"];
 
   return (
     <div className={`application-process-page ${theme === 'green' ? 'green-theme' : ''}`}>
@@ -457,29 +444,7 @@ const ApplicationProcess = ({
         </div>
       </section>
 
-      {/* Important Dates */}
-      <section className="important-dates">
-        <div className="container">
-          <div className="section-header">
-            <h2>Important Dates - 2025/2026 Session</h2>
-            <p>Mark your calendar with these crucial dates</p>
-          </div>
-          
-          <div className="dates-timeline">
-            {importantDates.map((date, index) => (
-              <div key={index} className={`date-item ${date.category}`}>
-                <div className="date-marker">
-                  <FaCalendarAlt />
-                </div>
-                <div className="date-content">
-                  <h4>{date.event}</h4>
-                  <span className="date-value">{date.date}</span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      
 
       {/* Help & Support */}
       <section className="help-support">

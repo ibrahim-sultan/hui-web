@@ -266,11 +266,13 @@
   margin-bottom: 1rem;
   font-size: 1.3rem;
   font-weight: 600;
+  color: #ffffff;
 }
 
 .subject-card p {
   margin-bottom: 0.5rem;
   line-height: 1.6;
+  color: #ffffff;
 }
 
 /* Cut-off Marks */
