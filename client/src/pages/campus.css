@@ -8,7 +8,7 @@
 
 /* Hero Section */
 .campus-hero {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #157646 0%, #1a8754 100%);
   position: relative;
   padding: 120px 0 80px;
   color: white;
@@ -137,13 +137,13 @@
   padding: 1.5rem;
   background: #f8f9fa;
   border-radius: 10px;
-  border-left: 4px solid #667eea;
+  border-left: 4px solid #157646;
 }
 
 .stat-number {
   font-size: 2rem;
   font-weight: 700;
-  color: #667eea;
+  color: #157646;
   margin-bottom: 0.5rem;
 }
 
@@ -162,12 +162,12 @@
   position: relative;
   width: 300px;
   height: 300px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #157646 0%, #1a8754 100%);
   border-radius: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 20px 40px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 20px 40px rgba(21, 118, 70, 0.3);
 }
 
 .campus-icon {
@@ -245,15 +245,15 @@
   border-radius: 15px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
-  border-top: 4px solid #667eea;
+  border-top: 4px solid #157646;
 }
 
 .facility-card:nth-child(2n) {
-  border-top-color: #764ba2;
+  border-top-color: #1a8754;
 }
 
 .facility-card:nth-child(3n) {
-  border-top-color: #ffd700;
+  border-top-color: #0f5132;
 }
 
 .facility-card:hover {
@@ -270,7 +270,7 @@
 .facility-icon {
   width: 60px;
   height: 60px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #157646 0%, #1a8754 100%);
   color: white;
   border-radius: 50%;
   display: flex;
@@ -280,11 +280,11 @@
 }
 
 .facility-card:nth-child(2n) .facility-icon {
-  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+  background: linear-gradient(135deg, #1a8754 0%, #157646 100%);
 }
 
 .facility-card:nth-child(3n) .facility-icon {
-  background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+  background: linear-gradient(135deg, #0f5132 0%, #1a8754 100%);
 }
 
 .facility-card h3 {
@@ -387,7 +387,7 @@
 .transport-icon {
   width: 40px;
   height: 40px;
-  background: #667eea;
+  background: #157646;
   color: white;
   border-radius: 50%;
   display: flex;
@@ -454,7 +454,7 @@
 }
 
 .map-button {
-  background: #667eea;
+  background: #157646;
   color: white;
   border: none;
   padding: 0.8rem 1.5rem;
@@ -465,14 +465,14 @@
 }
 
 .map-button:hover {
-  background: #764ba2;
+  background: #1a8754;
   transform: translateY(-2px);
 }
 
 /* Contact CTA */
 .contact-cta {
   padding: 80px 0;
-  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+  background: linear-gradient(135deg, #157646 0%, #1a8754 100%);
   color: white;
   text-align: center;
 }

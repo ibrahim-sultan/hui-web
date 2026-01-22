@@ -8,7 +8,7 @@
 
 /* Hero Section */
 .library-hero {
-  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  background: linear-gradient(135deg, #157646 0%, #1a8754 100%);
   position: relative;
   padding: 120px 0 80px;
   color: white;
@@ -126,20 +126,20 @@
   border-radius: 15px;
   padding: 2rem;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-  border-top: 4px solid #4facfe;
+  border-top: 4px solid #157646;
   transition: transform 0.3s ease;
 }
 
 .service-card:nth-child(2n) {
-  border-top-color: #00f2fe;
+  border-top-color: #1a8754;
 }
 
 .service-card:nth-child(3n) {
-  border-top-color: #667eea;
+  border-top-color: #0f5132;
 }
 
 .service-card:nth-child(4n) {
-  border-top-color: #ffd700;
+  border-top-color: #1a8754;
 }
 
 .service-card:hover {
@@ -156,7 +156,7 @@
 .service-icon {
   width: 60px;
   height: 60px;
-  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  background: linear-gradient(135deg, #157646 0%, #1a8754 100%);
   color: white;
   border-radius: 50%;
   display: flex;
@@ -166,15 +166,15 @@
 }
 
 .service-card:nth-child(2n) .service-icon {
-  background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+  background: linear-gradient(135deg, #1a8754 0%, #157646 100%);
 }
 
 .service-card:nth-child(3n) .service-icon {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #0f5132 0%, #1a8754 100%);
 }
 
 .service-card:nth-child(4n) .service-icon {
-  background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+  background: linear-gradient(135deg, #1a8754 0%, #157646 100%);
 }
 
 .service-header h3 {
@@ -374,7 +374,7 @@
 }
 
 .section-icon {
-  color: #4facfe;
+  color: #157646;
   font-size: 1.3rem;
 }
 
@@ -464,23 +464,23 @@
 }
 
 .catalog-btn.primary {
-  background: #4facfe;
+  background: #157646;
   color: white;
 }
 
 .catalog-btn.primary:hover {
-  background: #00f2fe;
+  background: #1a8754;
   transform: translateY(-2px);
 }
 
 .catalog-btn.secondary {
   background: transparent;
-  color: #4facfe;
-  border: 2px solid #4facfe;
+  color: #157646;
+  border: 2px solid #157646;
 }
 
 .catalog-btn.secondary:hover {
-  background: #4facfe;
+  background: #157646;
   color: white;
   transform: translateY(-2px);
 }
@@ -520,15 +520,15 @@
   background: #f8f9fa;
   padding: 2rem;
   border-radius: 15px;
-  border-left: 4px solid #4facfe;
+  border-left: 4px solid #157646;
 }
 
 .policy-card:nth-child(2n) {
-  border-left-color: #667eea;
+  border-left-color: #1a8754;
 }
 
 .policy-card:nth-child(3n) {
-  border-left-color: #ffd700;
+  border-left-color: #0f5132;
 }
 
 .policy-card h4 {
@@ -555,7 +555,7 @@
   content: '•';
   position: absolute;
   left: 0;
-  color: #4facfe;
+  color: #157646;
   font-weight: 700;
 }
 
@@ -566,7 +566,7 @@
 /* Library Contact */
 .library-contact {
   padding: 80px 0;
-  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+  background: linear-gradient(135deg, #157646 0%, #1a8754 100%);
   color: white;
 }
 

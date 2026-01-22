@@ -1,6 +1,7 @@
 import React from 'react';
 import { FaGraduationCap, FaFileAlt, FaCheckCircle, FaExclamationTriangle } from 'react-icons/fa';
 import './admissionRequirements.css';
+import ApplicationProcess from './ApplicationProcess';
 
 const AdmissionRequirements = () => {
   const undergraduateReqs = [
@@ -70,6 +71,7 @@ const AdmissionRequirements = () => {
 
   return (
     <div className="admission-requirements-page">
+      <ApplicationProcess />
       {/* Hero Section */}
       <section className="requirements-hero">
         <div className="hero-overlay"></div>
@@ -220,7 +222,7 @@ const AdmissionRequirements = () => {
             <div className="cutoff-info">
               <div className="cutoff-card">
                 <h3>General Cut-off</h3>
-                <div className="cutoff-score">160</div>
+                <div className="cutoff-score">140</div>
                 <p>Minimum JAMB score for most programs</p>
               </div>
               

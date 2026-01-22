@@ -65,6 +65,26 @@ const ViceChancellor = () => {
     { year: "2025", detail: "Appointed Vice-Chancellor, Al-Hikmah University" }
   ];
 
+  const stressFreeFramework = [
+    { key: "S", title: "Student Success", detail: "Enhance learning outcomes, mentorship, and graduate employability" },
+    { key: "T", title: "Technology Integration", detail: "Digitize services, smart classrooms, and research tools" },
+    { key: "R", title: "Research Advancement", detail: "Strengthen research clusters and publications" },
+    { key: "E", title: "Efficiency & Governance", detail: "Transparent processes and performance culture" },
+    { key: "S", title: "Sustainability", detail: "Green campus initiatives and resource optimization" },
+    { key: "S", title: "Staff Welfare", detail: "Training, career progression, and well-being" },
+    { key: "F", title: "Funding & Partnerships", detail: "Grants, endowments, and strategic collaborations" },
+    { key: "R", title: "Reputation & Visibility", detail: "Brand building and community impact" },
+    { key: "E", title: "Engagement", detail: "Town-and-gown relations and stakeholder participation" },
+    { key: "E", title: "Excellence", detail: "Quality assurance across teaching, research, and service" }
+  ];
+
+  const selectedPublications = [
+    "Articles in Islamic Studies focusing on Da'wah and contemporary issues",
+    "Public Administration and governance studies relevant to tertiary institutions",
+    "Works on pedagogy and Islamic education methodology",
+    "Conference papers and invited lectures across Nigerian universities"
+  ];
+
   return (
     <div className="vice-chancellor-page">
       <section className="vc-hero">
@@ -203,6 +223,94 @@ const ViceChancellor = () => {
               <div className="goal-item">
                 <h4>Global Collaboration</h4>
                 <p>Building strategic partnerships across academia and civil society</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="vc-main-content">
+        <div className="container">
+          <div className="content-grid">
+            <div className="biography-section">
+              <div className="section-header">
+                <h3>Research and Publications</h3>
+                <div className="section-line"></div>
+              </div>
+              <div className="bio-text">
+                <p>
+                  Research interests include Da'wah and Contemporary Islamic Studies, Peace and Conflict Studies,
+                  Public Administration, Islamic Education and Pedagogy, and Interreligious Dialogue.
+                </p>
+              </div>
+              <div className="qualifications">
+                <h4>Selected Publications</h4>
+                <ul>
+                  {selectedPublications.map((p, i) => (
+                    <li key={i}>{p}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            <div className="achievements-sidebar">
+              <h3>Administrative Career</h3>
+              <div className="achievements-list">
+                {externalService.map((role, idx) => (
+                  <div key={idx} className="achievement-item">
+                    <div className="achievement-content">
+                      <h4>{role}</h4>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="vision-section">
+        <div className="container">
+          <div className="vision-content">
+            <h2>Strategic Vision: The STRESS-FREE Framework</h2>
+            <div className="goals-grid">
+              {stressFreeFramework.map((item, i) => (
+                <div key={i} className="goal-item">
+                  <h4>{item.key} — {item.title}</h4>
+                  <p>{item.detail}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="vc-main-content">
+        <div className="container">
+          <div className="content-grid">
+            <div className="biography-section">
+              <div className="section-header">
+                <h3>Additional Leadership Priorities</h3>
+                <div className="section-line"></div>
+              </div>
+              <div className="bio-text">
+                <p>
+                  Priorities include strengthening academic quality, fostering inclusive campus culture,
+                  enhancing staff development, ensuring sustainable operations, and expanding external relations.
+                </p>
+              </div>
+            </div>
+            <div className="achievements-sidebar">
+              <h3>Contact</h3>
+              <div className="achievements-list">
+                <div className="achievement-item">
+                  <div className="achievement-content">
+                    <h4>Office of the Vice-Chancellor</h4>
+                    <p>Email: vc@alhikmah.edu.ng</p>
+                    <p>Phone: +234 803 000 0000</p>
+                    <p>Address: Al-Hikmah University, Ilorin, Kwara State, Nigeria</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

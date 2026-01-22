@@ -500,15 +500,16 @@
   align-items: center;
   padding: 12px 15px;
   background: #f8f9fa;
-  color: #666;
+  color: #157646;
   text-decoration: none;
   border-radius: 8px;
   transition: all 0.3s ease;
+  font-weight: 600;
 }
 
 .quick-link:hover {
-  background: #157646;
-  color: white;
+  background: rgba(21, 118, 70, 0.1);
+  color: #1a8754;
   padding-left: 20px;
 }
 
