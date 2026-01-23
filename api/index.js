@@ -16,6 +16,9 @@ import postRoutes from "./routes/posts.js";
 import mediaRoutes from "./routes/media.js";
 import adminRoutes from "./routes/admin.js";
 import Setting from "./models/Setting.js";
+import registryRoutes from "./routes/registry.js";
+import complaintRoutes from "./routes/complaints.js";
+import registryAdminRoutes from "./routes/registryAdmin.js";
 
 dotenv.config();
 
@@ -260,6 +263,9 @@ app.post('/api/login', authLimiter, validateLogin, handleValidationErrors, async
 app.use('/api/posts', postRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/media', mediaRoutes);
+app.use('/api/registry', registryRoutes);
+app.use('/api/complaints', complaintRoutes);
+app.use('/api/admin/registry', registryAdminRoutes);
 
 // Serve client build in production (SPA fallback)
 const clientBuildPath = path.join(process.cwd(), '../client/build');

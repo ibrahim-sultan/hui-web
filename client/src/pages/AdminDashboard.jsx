@@ -163,6 +163,68 @@ const AdminDashboard = () => {
     navigate('/login');
   };
 
+  const [registryItems, setRegistryItems] = useState([]);
+  const [registryLoading, setRegistryLoading] = useState(false);
+  const [registryFile, setRegistryFile] = useState(null);
+  const [registrySearch, setRegistrySearch] = useState('');
+  const [registryType, setRegistryType] = useState('');
+  const fetchRegistry = async () => {
+    try {
+      setRegistryLoading(true);
+      const params = {};
+      if (registryType) params.type = registryType;
+      if (registrySearch) params.q = registrySearch;
+      const res = await axios.get('/api/admin/registry', {
+        params,
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      setRegistryItems(res.data?.items || []);
+    } catch (e) {
+      console.error('Registry fetch error', e);
+    } finally {
+      setRegistryLoading(false);
+    }
+  };
+  useEffect(() => {
+    if (token && user && user.role === 'admin') {
+      fetchRegistry();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  const uploadRegistry = async () => {
+    if (!registryFile) {
+      alert('Select a CSV file to upload');
+      return;
+    }
+    try {
+      const form = new FormData();
+      form.append('file', registryFile);
+      const res = await axios.post('/api/admin/registry/bulk', form, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+          Authorization: `Bearer ${token}`
+        }
+      });
+      alert(`Processed ${res.data?.totalProcessed || 0} records`);
+      setRegistryFile(null);
+      fetchRegistry();
+    } catch (e) {
+      const msg = e.response?.data?.message || e.message || 'Upload failed';
+      alert(msg);
+    }
+  };
+  const deleteRegistry = async (id) => {
+    if (!window.confirm('Delete this entry?')) return;
+    try {
+      await axios.delete(`/api/admin/registry/${id}`, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      setRegistryItems(prev => prev.filter(r => r._id !== id));
+    } catch (e) {
+      alert(e.response?.data?.message || 'Delete failed');
+    }
+  };
+
   if (loading) return <div className="loading">Loading...</div>;
 
   return (
@@ -185,6 +247,56 @@ const AdminDashboard = () => {
         </div>
       </div>
       
+      <div className="section-card">
+        <h3 className="section-title">Student & Staff Registry</h3>
+        <p className="section-subtitle">Upload bulk CSV and manage entries</p>
+        <div className="form-grid">
+          <input
+            type="file"
+            accept=".csv,text/csv"
+            onChange={(e)=>setRegistryFile(e.target.files?.[0] || null)}
+          />
+          <button onClick={uploadRegistry} className="btn btn-primary">Upload CSV</button>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 160px 120px', gap: 12 }}>
+            <input
+              type="text"
+              placeholder="Search by name, email, department, ID"
+              value={registrySearch}
+              onChange={(e)=>setRegistrySearch(e.target.value)}
+            />
+            <select value={registryType} onChange={(e)=>setRegistryType(e.target.value)}>
+              <option value="">All Types</option>
+              <option value="student">Student</option>
+              <option value="staff">Staff</option>
+            </select>
+            <button className="btn btn-secondary" onClick={fetchRegistry}>
+              {registryLoading ? 'Loading...' : 'Refresh'}
+            </button>
+          </div>
+        </div>
+        <div className="media-grid" style={{ marginTop: 16 }}>
+          {registryItems.map(item => (
+            <div key={item._id} className="media-card">
+              <div style={{ padding: 8 }}>
+                <div style={{ fontWeight: 700, color: '#0f5a36', marginBottom: 6 }}>{item.fullName}</div>
+                <div style={{ fontSize: 13, color: '#555' }}>{item.email || 'No email'}</div>
+                <div style={{ fontSize: 13, color: '#555' }}>{item.department || 'No department'}</div>
+                <div style={{ fontSize: 13, color: '#222', marginTop: 6 }}>
+                  {item.type === 'staff' ? 'Staff ID' : 'Matric Number'}: <strong>{item.idNumber}</strong>
+                </div>
+              </div>
+              <div className="media-card-footer">
+                <span className="media-type">{item.type}</span>
+                <button className="btn btn-secondary" onClick={()=>deleteRegistry(item._id)}>Delete</button>
+              </div>
+            </div>
+          ))}
+          {registryItems.length === 0 && !registryLoading && (
+            <div style={{ color: '#555' }}>No entries found</div>
+          )}
+        </div>
+      </div>
+
       <div className="section-card admin-video-config">
         <h3 className="section-title">Homepage Video</h3>
         <input
