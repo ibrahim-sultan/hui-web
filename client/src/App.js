@@ -30,7 +30,6 @@ import StudentServices from "./pages/StudentServices";
 import Research from "./pages/Research";
 import Library from "./pages/Library";
 import UniversityMedia from "./pages/UniversityMedia";
-import Complaint from "./pages/Complaint";
 
 function App() {
   return (
@@ -46,7 +45,6 @@ function App() {
             <Route path="/faculties" element={<Faculties />} />
             <Route path="/life" element={<Life />} />
             <Route path="/portal" element={<Portal />} />
-            <Route path="/complaints" element={<Complaint />} />
             
             {/* University Information */}
             <Route path="/about-us" element={<AboutUs />} />
