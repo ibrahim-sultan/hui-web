@@ -127,121 +127,191 @@ function FacultyDetail() {
     <div>
       <section
         style={{
-          background:
-            "linear-gradient(135deg, #0f5a36 0%, #157646 50%, #1a8754 100%)",
+          backgroundImage:
+            "url(https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1200&auto=format&fit=crop)",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          position: "relative",
           color: "#fff",
-          padding: "72px 24px",
+          padding: "80px 24px",
           textAlign: "center",
         }}
       >
-        <div style={{ maxWidth: 1000, margin: "0 auto" }}>
-          <h1 style={{ margin: 0, fontSize: "2.6rem" }}>{title}</h1>
-          <p style={{ marginTop: 10, opacity: 0.9 }}>
-            Explore programs, departments, and opportunities
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            background:
+              "linear-gradient(180deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.35) 60%, rgba(0,0,0,0.5) 100%)",
+          }}
+        />
+        <div style={{ position: "relative", maxWidth: 1100, margin: "0 auto" }}>
+          <div style={{ marginBottom: 12, opacity: 0.9 }}>
+            <Link to="/" style={{ color: "#fff", textDecoration: "none" }}>
+              Home
+            </Link>{" "}
+            /{" "}
+            <Link to="/programs" style={{ color: "#fff", textDecoration: "none" }}>
+              Faculties
+            </Link>{" "}
+            / <span>{title}</span>
+          </div>
+          <h1 style={{ margin: 0, fontSize: "2.8rem" }}>{title}</h1>
+          <p style={{ marginTop: 8 }}>
+            Excellence in teaching, research, and community impact
           </p>
-          <div style={{ marginTop: 16 }}>
-            {site && (
-              <a
-                href={site}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: 8,
-                  padding: "12px 18px",
-                  borderRadius: 8,
-                  background: "#ffffff",
-                  color: "#0f5a36",
-                  textDecoration: "none",
-                  fontWeight: 700,
-                }}
-              >
-                <FaExternalLinkAlt /> Visit Faculty Site
-              </a>
-            )}
-          </div>
-        </div>
-      </section>
-
-      <section style={{ padding: "32px 0", background: "#f7f9fb" }}>
-        <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 20px" }}>
-          <div
-            style={{
-              background: "#fff",
-              borderRadius: 12,
-              boxShadow: "0 6px 20px rgba(0,0,0,0.08)",
-              padding: 20,
-              marginBottom: 20,
-            }}
-          >
-            <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-              <FaUniversity color="#157646" />
-              <h2 style={{ margin: 0 }}>Overview</h2>
-            </div>
-            <p style={{ color: "#444", lineHeight: 1.7 }}>
-              {data?.description || "Information will be available soon."}
-            </p>
-            <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-              <FaUserTie color="#157646" />
-              <div style={{ color: "#222" }}>
-                Dean: {data?.dean || "To be announced"}
-              </div>
-            </div>
-          </div>
-
-          <div
-            style={{
-              background: "#fff",
-              borderRadius: 12,
-              boxShadow: "0 6px 20px rgba(0,0,0,0.08)",
-              padding: 20,
-            }}
-          >
-            <h3 style={{ marginTop: 0 }}>Departments</h3>
-            <div
+          {site && (
+            <a
+              href={site}
+              target="_blank"
+              rel="noopener noreferrer"
               style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
-                gap: 12,
-              }}
-            >
-              {(data?.departments || []).map((dept, idx) => (
-                <div
-                  key={idx}
-                  style={{
-                    background: "#f8fdf9",
-                    border: "1px solid #e6f3ea",
-                    borderRadius: 10,
-                    padding: 14,
-                  }}
-                >
-                  <div style={{ fontWeight: 700, color: "#0f5a36" }}>
-                    {dept}
-                  </div>
-                  <div style={{ color: "#555", fontSize: 13 }}>
-                    Learn more about curriculum, labs, and opportunities
-                  </div>
-                </div>
-              ))}
-              {(!data || !data.departments || data.departments.length === 0) && (
-                <div style={{ color: "#555" }}>Departments will be listed soon</div>
-              )}
-            </div>
-          </div>
-
-          <div style={{ textAlign: "center", marginTop: 24 }}>
-            <Link
-              to="/programs"
-              style={{
-                color: "#157646",
+                display: "inline-block",
+                marginTop: 16,
+                padding: "12px 18px",
+                borderRadius: 8,
+                background: "#ffffff",
+                color: "#0f5a36",
                 textDecoration: "none",
                 fontWeight: 700,
               }}
             >
-              Back to Programs
-            </Link>
+              <span style={{ display: "inline-flex", alignItems: "center", gap: 8 }}>
+                <FaExternalLinkAlt /> Visit Faculty Site
+              </span>
+            </a>
+          )}
+        </div>
+      </section>
+
+      <section style={{ padding: "36px 0", background: "#f5f7fa" }}>
+        <div
+          style={{
+            maxWidth: 1200,
+            margin: "0 auto",
+            padding: "0 20px",
+            display: "grid",
+            gridTemplateColumns: "1fr 320px",
+            gap: 20,
+          }}
+        >
+          <div>
+            <div
+              style={{
+                background: "#fff",
+                borderRadius: 12,
+                boxShadow: "0 6px 20px rgba(0,0,0,0.08)",
+                padding: 20,
+                marginBottom: 20,
+              }}
+            >
+              <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                <FaUniversity color="#157646" />
+                <h2 style={{ margin: 0 }}>Overview</h2>
+              </div>
+              <p style={{ color: "#444", lineHeight: 1.8 }}>
+                {data?.description ||
+                  "Information will be available soon. Explore our programs and departments."}
+              </p>
+              <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                <FaUserTie color="#157646" />
+                <div style={{ color: "#222" }}>
+                  Dean: {data?.dean || "To be announced"}
+                </div>
+              </div>
+            </div>
+
+            <div
+              style={{
+                background: "#fff",
+                borderRadius: 12,
+                boxShadow: "0 6px 20px rgba(0,0,0,0.08)",
+                padding: 20,
+              }}
+            >
+              <h3 style={{ marginTop: 0 }}>Departments</h3>
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+                  gap: 14,
+                }}
+              >
+                {(data?.departments || []).map((dept, idx) => (
+                  <div
+                    key={idx}
+                    style={{
+                      borderRadius: 10,
+                      overflow: "hidden",
+                      border: "1px solid #e6f3ea",
+                      background: "#f8fdf9",
+                    }}
+                  >
+                    <div
+                      style={{
+                        height: 120,
+                        background:
+                          "linear-gradient(135deg, #0f5a36 0%, #157646 100%)",
+                      }}
+                    />
+                    <div style={{ padding: 14 }}>
+                      <div style={{ fontWeight: 700, color: "#0f5a36" }}>{dept}</div>
+                      <div style={{ color: "#555", fontSize: 13 }}>
+                        Program details, labs, and opportunities
+                      </div>
+                    </div>
+                  </div>
+                ))}
+                {(!data || !data.departments || data.departments.length === 0) && (
+                  <div style={{ color: "#555" }}>Departments will be listed soon</div>
+                )}
+              </div>
+            </div>
           </div>
+
+          <aside>
+            <div
+              style={{
+                background: "#fff",
+                borderRadius: 12,
+                boxShadow: "0 6px 20px rgba(0,0,0,0.08)",
+                padding: 20,
+                marginBottom: 20,
+              }}
+            >
+              <h3 style={{ marginTop: 0 }}>Quick Links</h3>
+              <div style={{ display: "grid", gap: 8 }}>
+                <Link to="/admission-requirements" style={{ color: "#157646", textDecoration: "none" }}>
+                  Admission Requirements
+                </Link>
+                <Link to="/application-process" style={{ color: "#157646", textDecoration: "none" }}>
+                  Application Process
+                </Link>
+                <Link to="/student-services" style={{ color: "#157646", textDecoration: "none" }}>
+                  Student Services
+                </Link>
+                <Link to="/library" style={{ color: "#157646", textDecoration: "none" }}>
+                  Library
+                </Link>
+              </div>
+            </div>
+            <div
+              style={{
+                background: "#fff",
+                borderRadius: 12,
+                boxShadow: "0 6px 20px rgba(0,0,0,0.08)",
+                padding: 20,
+              }}
+            >
+              <h3 style={{ marginTop: 0 }}>Contact</h3>
+              <div style={{ color: "#444" }}>
+                <div>Al‑Hikmah University</div>
+                <div>Ilorin, Kwara State, Nigeria</div>
+                <div style={{ marginTop: 8 }}>Email: info@alhikmahuniversity.edu.ng</div>
+                <div>Phone: +234 803 123 4567</div>
+              </div>
+            </div>
+          </aside>
         </div>
       </section>
     </div>
