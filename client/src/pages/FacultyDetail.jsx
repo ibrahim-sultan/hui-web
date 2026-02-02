@@ -5,31 +5,31 @@ import { FaExternalLinkAlt, FaUniversity, FaUserTie } from "react-icons/fa";
 const FACULTY_MAP = {
   management: {
     title: "Faculty of Management Sciences",
-    site: "https://management.alhikmahuniversity.edu.ng/",
+    site: "https://alhikmahuniversity.edu.ng/faculty-of-management-sciences/",
   },
   humanities: {
     title: "Faculty of Humanities and Social Sciences",
-    site: "https://humanities.alhikmahuniversity.edu.ng/",
+    site: "https://alhikmahuniversity.edu.ng/faculty-of-humanities-and-social-sciences/",
   },
   sciences: {
     title: "Faculty of Natural and Applied Sciences",
-    site: "https://sciences.alhikmahuniversity.edu.ng/",
+    site: "https://alhikmahuniversity.edu.ng/faculty-of-natural-and-applied-sciences/",
   },
   education: {
     title: "Faculty of Education",
-    site: "https://education.alhikmahuniversity.edu.ng/",
+    site: "https://alhikmahuniversity.edu.ng/faculty-of-education/",
   },
   health: {
     title: "Faculty of Health Sciences",
-    site: "https://health.alhikmahuniversity.edu.ng/",
+    site: "https://alhikmahuniversity.edu.ng/faculty-of-health-sciences/",
   },
   law: {
     title: "Faculty of Law",
-    site: "https://law.alhikmahuniversity.edu.ng/",
+    site: "https://alhikmahuniversity.edu.ng/faculty-of-law/",
   },
   computing: {
     title: "Faculty of Computing, Engineering and Technology",
-    site: "https://computing.alhikmahuniversity.edu.ng/",
+    site: "https://alhikmahuniversity.edu.ng/faculty-of-computing-engineering-and-technology/",
   },
   agriculture: {
     title: "Faculty of Agriculture",
@@ -41,13 +41,13 @@ const FACULTY_DATA = {
   "Faculty of Agriculture": {
     dean: "Dr. K.N Olorunnishoa",
     description:
-      "The Faculty of Agricultural Sciences delivers a robust, modern curriculum and practical exposure in crop production, agribusiness, and sustainable practices.",
+      "Delivers a modern agriculture curriculum with practical exposure in crop production, agribusiness, and sustainable practices, including scholarship support for pioneer cohorts.",
     departments: ["Department of Agriculture"],
   },
   "Faculty of Education": {
     dean: "Dr. Mrs. RASHEEDAT M. OLADIMEJI",
     description:
-      "A comprehensive faculty focused on training educators and administrators with strong pedagogy and leadership skills.",
+      "A well-structured outreach-driven unit offering broad undergraduate education degrees and postgraduate programs focused on pedagogy, leadership, and curriculum development.",
     departments: [
       "Department of Science Education",
       "Department of Arts and Social Sciences Education",
@@ -57,7 +57,7 @@ const FACULTY_DATA = {
   "Faculty of Health Sciences": {
     dean: "Prof. O.O Kayode",
     description:
-      "Offers programs in Medical Laboratory Science, Public Health, Anatomy, and Physiology with strong clinical exposure.",
+      "Offers robust programmes in Medical Laboratory Science, Community Health, Anatomy, Physiology, and Nursing with strong clinical training and modern laboratories.",
     departments: [
       "Department of Medical Laboratory Science",
       "Department of Community Health",
@@ -68,7 +68,7 @@ const FACULTY_DATA = {
   "Faculty of Humanities and Social Sciences": {
     dean: "Prof. L. F Oladimeji",
     description:
-      "Combines liberal arts and social sciences, fostering critical thinking and societal impact.",
+      "Combines liberal arts and social sciences with programs that foster critical thinking, communication, and civic engagement across languages, media, and governance.",
     departments: [
       "Department of Sociology and Criminology",
       "Department of Political Science and Public Administration",
@@ -81,13 +81,13 @@ const FACULTY_DATA = {
   "Faculty of Law": {
     dean: "Dr. (Mrs.) Bayero-jimoh Maryam",
     description:
-      "Fully accredited faculty offering a comprehensive LL.B in Common and Islamic Law.",
+      "Fully accredited faculty offering a comprehensive LL.B with foundations in Common Law and Islamic Law supported by moots, clinics, and professional mentorship.",
     departments: ["Department of Law"],
   },
   "Faculty of Management Sciences": {
     dean: "Prof. Aremu M Adeyemi FSM",
     description:
-      "Develops professionals in accounting, finance, business, and economics through rigorous training.",
+      "Develops professionals in accounting, finance, business, and economics through rigorous training aligned with industry certifications and entrepreneurship pathways.",
     departments: [
       "Department of Accounting",
       "Department of Finance",
@@ -98,7 +98,7 @@ const FACULTY_DATA = {
   "Faculty of Natural and Applied Sciences": {
     dean: "Dr (Mrs) F.M JIMOH",
     description:
-      "Comprehensive STEM education with structured departments and modern laboratories.",
+      "Comprehensive STEM education spanning physical, biological, chemical, and geological sciences with structured laboratories and research initiatives.",
     departments: [
       "Department of Chemical and Geological Sciences",
       "Department of Biological Sciences",
@@ -108,7 +108,7 @@ const FACULTY_DATA = {
   "Faculty of Computing, Engineering and Technology": {
     dean: "Dr. T.U ABDULRAUF",
     description:
-      "Specializes in cybersecurity, software development, and information systems.",
+      "Specializes in computer science and information systems with emphasis on software engineering, cybersecurity, data science, and applied technology.",
     departments: [
       "Department of Computer Sciences",
       "Department of Data Science and Information Systems",
