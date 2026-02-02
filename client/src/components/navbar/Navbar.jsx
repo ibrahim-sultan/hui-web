@@ -5,14 +5,9 @@ import logo from '../../assets/logo11.png';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isPortalOpen, setIsPortalOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
-  };
-
-  const togglePortalDropdown = () => {
-    setIsPortalOpen(!isPortalOpen);
   };
 
   return (
@@ -70,17 +65,6 @@ const Navbar = () => {
 
           {/* News & Events */}
           <li><Link to="/news" className="nav-link">News & Events</Link></li>
-
-          {/* Portal with dropdown */}
-          <li className={`dropdown ${isPortalOpen ? 'show' : ''}`} onClick={togglePortalDropdown}>
-            <span className="nav-link dropdown-toggle">Portal</span>
-            <ul className="dropdown-menu">
-              <li><a href="https://ecampus.alhikmahuniversity.edu.ng/portal/" className="dropdown-item" target="_blank" rel="noopener noreferrer">Student Portal</a></li>
-              <li><a href="https://portal.alhikmah.edu.ng/students/" className="dropdown-item" target="_blank" rel="noopener noreferrer">Result Portal</a></li>
-              <li><a href="http://topup.alhikmah.edu.ng/students/" className="dropdown-item" target="_blank" rel="noopener noreferrer">Top-up Portal</a></li>
-              <li><a href="https://sandwich.alhikmah.edu.ng/students/" className="dropdown-item" target="_blank" rel="noopener noreferrer">Sandwich Portal</a></li>
-            </ul>
-          </li>
 
           {/* Contact */}
           <li><Link to="/contact" className="nav-link">Contact</Link></li>

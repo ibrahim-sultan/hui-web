@@ -30,6 +30,7 @@ import StudentServices from "./pages/StudentServices";
 import Research from "./pages/Research";
 import Library from "./pages/Library";
 import UniversityMedia from "./pages/UniversityMedia";
+import FacultyDetail from "./pages/FacultyDetail";
 
 function App() {
   return (
@@ -43,6 +44,7 @@ function App() {
             <Route path="/academic" element={<Academic />} />
             <Route path="/admission" element={<Admission />} />
             <Route path="/faculties" element={<Faculties />} />
+            <Route path="/faculties/:slug" element={<FacultyDetail />} />
             <Route path="/life" element={<Life />} />
             <Route path="/portal" element={<Portal />} />
             

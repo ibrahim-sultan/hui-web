@@ -167,13 +167,18 @@ const Programs = () => {
           <h2>Our Faculties</h2>
           <div className="faculties-grid">
             {faculties.map((faculty) => (
-              <div key={faculty.id} className="faculty-card" style={{ borderLeftColor: faculty.color }}>
+              <a
+                key={faculty.id}
+                href={`/faculties/${faculty.id}`}
+                className="faculty-card"
+                style={{ borderLeftColor: faculty.color, textDecoration: 'none' }}
+              >
                 <div className="faculty-icon" style={{ color: faculty.color }}>
                   {faculty.icon}
                 </div>
-                <h3>{faculty.name}</h3>
+                <h3 style={{ color: '#2c3e50' }}>{faculty.name}</h3>
                 <p>Comprehensive programs designed for academic and professional excellence</p>
-              </div>
+              </a>
             ))}
           </div>
         </div>
