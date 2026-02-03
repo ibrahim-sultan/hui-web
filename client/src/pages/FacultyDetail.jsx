@@ -156,9 +156,9 @@ function FacultyDetail() {
             </Link>{" "}
             / <span>{title}</span>
           </div>
-          <h1 style={{ margin: 0, fontSize: "2.8rem" }}>{title}</h1>
-          <p style={{ marginTop: 8 }}>
-            Excellence in teaching, research, and community impact
+          <h1 style={{ margin: 0, fontSize: "3rem" }}>Welcome to the {title}</h1>
+          <p style={{ marginTop: 8, fontSize: 18 }}>
+            We engage in innovative research and education, equipping students with skills for future careers.
           </p>
           {site && (
             <a
@@ -207,7 +207,7 @@ function FacultyDetail() {
             >
               <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
                 <FaUniversity color="#157646" />
-                <h2 style={{ margin: 0 }}>Overview</h2>
+                <h2 style={{ margin: 0 }}>About Us</h2>
               </div>
               <p style={{ color: "#444", lineHeight: 1.8 }}>
                 {data?.description ||
@@ -217,6 +217,90 @@ function FacultyDetail() {
                 <FaUserTie color="#157646" />
                 <div style={{ color: "#222" }}>
                   Dean: {data?.dean || "To be announced"}
+                </div>
+              </div>
+            </div>
+
+            <div
+              style={{
+                background: "#fff",
+                borderRadius: 12,
+                boxShadow: "0 6px 20px rgba(0,0,0,0.08)",
+                padding: 20,
+                marginBottom: 20,
+              }}
+            >
+              <h3 style={{ marginTop: 0 }}>Our Mission</h3>
+              <div style={{ display: "grid", gap: 10 }}>
+                <div style={{ border: "1px solid #e8f2ec", borderRadius: 10, padding: 14 }}>
+                  To conduct research that addresses pressing challenges in our domain.
+                </div>
+                <div style={{ border: "1px solid #e8f2ec", borderRadius: 10, padding: 14 }}>
+                  To empower students to become leaders through education and innovation.
+                </div>
+                <div style={{ border: "1px solid #e8f2ec", borderRadius: 10, padding: 14 }}>
+                  To engage communities and industry for real-world impact.
+                </div>
+              </div>
+            </div>
+
+            <div
+              style={{
+                background: "#fff",
+                borderRadius: 12,
+                boxShadow: "0 6px 20px rgba(0,0,0,0.08)",
+                padding: 20,
+                marginBottom: 20,
+              }}
+            >
+              <h3 style={{ marginTop: 0 }}>Key Statistics</h3>
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))",
+                  gap: 12,
+                }}
+              >
+                <div style={{ background: "#f8fdf9", border: "1px solid #e6f3ea", borderRadius: 10, padding: 16 }}>
+                  <div style={{ fontSize: 26, fontWeight: 800, color: "#157646" }}>1%</div>
+                  <div style={{ color: "#333" }}>Students Enrolled</div>
+                </div>
+                <div style={{ background: "#f8fdf9", border: "1px solid #e6f3ea", borderRadius: 10, padding: 16 }}>
+                  <div style={{ fontSize: 26, fontWeight: 800, color: "#157646" }}>1k+</div>
+                  <div style={{ color: "#333" }}>Research Projects</div>
+                </div>
+                <div style={{ background: "#f8fdf9", border: "1px solid #e6f3ea", borderRadius: 10, padding: 16 }}>
+                  <div style={{ fontSize: 26, fontWeight: 800, color: "#157646" }}>1+</div>
+                  <div style={{ color: "#333" }}>Community Initiatives</div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              style={{
+                background: "#fff",
+                borderRadius: 12,
+                boxShadow: "0 6px 20px rgba(0,0,0,0.08)",
+                padding: 20,
+                marginBottom: 20,
+              }}
+            >
+              <h3 style={{ marginTop: 0 }}>Why Choose the {title}</h3>
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
+                  gap: 12,
+                }}
+              >
+                <div style={{ background: "#f8fdf9", border: "1px solid #e6f3ea", borderRadius: 10, padding: 16 }}>
+                  Innovative curriculum and research focus
+                </div>
+                <div style={{ background: "#f8fdf9", border: "1px solid #e6f3ea", borderRadius: 10, padding: 16 }}>
+                  Experienced faculty with real-world insights
+                </div>
+                <div style={{ background: "#f8fdf9", border: "1px solid #e6f3ea", borderRadius: 10, padding: 16 }}>
+                  Community engagement and extension services
                 </div>
               </div>
             </div>
@@ -265,6 +349,42 @@ function FacultyDetail() {
                 {(!data || !data.departments || data.departments.length === 0) && (
                   <div style={{ color: "#555" }}>Departments will be listed soon</div>
                 )}
+              </div>
+            </div>
+
+            <div
+              style={{
+                background: "#fff",
+                borderRadius: 12,
+                boxShadow: "0 6px 20px rgba(0,0,0,0.08)",
+                padding: 20,
+                marginTop: 20,
+              }}
+            >
+              <h3 style={{ marginTop: 0 }}>Testimonials</h3>
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+                  gap: 14,
+                }}
+              >
+                <div style={{ border: "1px solid #e6f3ea", borderRadius: 10, padding: 16 }}>
+                  <div style={{ fontStyle: "italic", color: "#333" }}>
+                    "The faculty equipped me with the knowledge and skills necessary to excel in my career!"
+                  </div>
+                  <div style={{ marginTop: 10, color: "#555" }}>
+                    Graduate, Department of {data?.departments?.[0] ? data.departments[0].replace("Department of ", "") : "Studies"}
+                  </div>
+                </div>
+                <div style={{ border: "1px solid #e6f3ea", borderRadius: 10, padding: 16 }}>
+                  <div style={{ fontStyle: "italic", color: "#333" }}>
+                    "Hands-on experience prepared me for real challenges, and I feel confident in my career."
+                  </div>
+                  <div style={{ marginTop: 10, color: "#555" }}>
+                    Alumni, {title}
+                  </div>
+                </div>
               </div>
             </div>
           </div>
