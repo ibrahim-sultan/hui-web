@@ -4,13 +4,6 @@ const router = express.Router();
 
 const MAP = {
   agriculture: "https://agriculture.alhikmahuniversity.edu.ng/",
-  management: "https://alhikmahuniversity.edu.ng/faculty-of-management-sciences/",
-  humanities: "https://alhikmahuniversity.edu.ng/faculty-of-humanities-and-social-sciences/",
-  sciences: "https://alhikmahuniversity.edu.ng/faculty-of-natural-and-applied-sciences/",
-  education: "https://alhikmahuniversity.edu.ng/faculty-of-education/",
-  health: "https://alhikmahuniversity.edu.ng/faculty-of-health-sciences/",
-  law: "https://alhikmahuniversity.edu.ng/faculty-of-law/",
-  computing: "https://alhikmahuniversity.edu.ng/faculty-of-computing-engineering-and-technology/",
 };
 
 function absolutizeHtml(html, baseUrl) {

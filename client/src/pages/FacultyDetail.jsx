@@ -126,6 +126,10 @@ function FacultyDetail() {
   const [mirroredHtml, setMirroredHtml] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  if (slug !== "agriculture") {
+    return null;
+  }
+
   useEffect(() => {
     let isMounted = true;
     setLoading(true);
@@ -148,64 +152,7 @@ function FacultyDetail() {
 
   return (
     <div>
-      <section
-        style={{
-          backgroundImage:
-            "url(https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1200&auto=format&fit=crop)",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          position: "relative",
-          color: "#fff",
-          padding: "80px 24px",
-          textAlign: "center",
-        }}
-      >
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            background:
-              "linear-gradient(180deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.35) 60%, rgba(0,0,0,0.5) 100%)",
-          }}
-        />
-        <div style={{ position: "relative", maxWidth: 1100, margin: "0 auto" }}>
-          <div style={{ marginBottom: 12, opacity: 0.9 }}>
-            <Link to="/" style={{ color: "#fff", textDecoration: "none" }}>
-              Home
-            </Link>{" "}
-            /{" "}
-            <Link to="/programs" style={{ color: "#fff", textDecoration: "none" }}>
-              Faculties
-            </Link>{" "}
-            / <span>{title}</span>
-          </div>
-          <h1 style={{ margin: 0, fontSize: "3rem" }}>Welcome to the {title}</h1>
-          <p style={{ marginTop: 8, fontSize: 18 }}>
-            We engage in innovative research and education, equipping students with skills for future careers.
-          </p>
-          {site && (
-            <a
-              href={site}
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                display: "inline-block",
-                marginTop: 16,
-                padding: "12px 18px",
-                borderRadius: 8,
-                background: "#ffffff",
-                color: "#0f5a36",
-                textDecoration: "none",
-                fontWeight: 700,
-              }}
-            >
-              <span style={{ display: "inline-flex", alignItems: "center", gap: 8 }}>
-                <FaExternalLinkAlt /> Visit Faculty Site
-              </span>
-            </a>
-          )}
-        </div>
-      </section>
+      {/* Hero removed for Agriculture as requested */}
 
       {loading && (
         <section style={{ padding: "24px 0", background: "#f5f7fa" }}>
