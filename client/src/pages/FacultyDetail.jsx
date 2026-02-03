@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import { useParams, Link } from "react-router-dom";
 import { FaExternalLinkAlt, FaUniversity, FaUserTie } from "react-icons/fa";
 
@@ -122,6 +123,28 @@ function FacultyDetail() {
   const title = meta?.title || "Faculty";
   const site = meta?.site || "";
   const data = FACULTY_DATA[title];
+  const [mirroredHtml, setMirroredHtml] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    let isMounted = true;
+    setLoading(true);
+    setMirroredHtml(null);
+    axios
+      .get(`/api/facultyContent/${slug}`)
+      .then((res) => {
+        if (!isMounted) return;
+        setMirroredHtml(res.data?.html || null);
+        setLoading(false);
+      })
+      .catch(() => {
+        if (!isMounted) return;
+        setLoading(false);
+      });
+    return () => {
+      isMounted = false;
+    };
+  }, [slug]);
 
   return (
     <div>
@@ -184,7 +207,24 @@ function FacultyDetail() {
         </div>
       </section>
 
-      <section style={{ padding: "36px 0", background: "#f5f7fa" }}>
+      {loading && (
+        <section style={{ padding: "24px 0", background: "#f5f7fa" }}>
+          <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 20px", color: "#333" }}>
+            Loading faculty details...
+          </div>
+        </section>
+      )}
+
+      {mirroredHtml ? (
+        <section style={{ padding: "0", background: "#ffffff" }}>
+          <div
+            className="faculty-mirror"
+            style={{ maxWidth: "100%", overflow: "hidden" }}
+            dangerouslySetInnerHTML={{ __html: mirroredHtml }}
+          />
+        </section>
+      ) : (
+        <section style={{ padding: "36px 0", background: "#f5f7fa" }}>
         <div
           style={{
             maxWidth: 1200,
@@ -433,7 +473,8 @@ function FacultyDetail() {
             </div>
           </aside>
         </div>
-      </section>
+        </section>
+      )}
     </div>
   );
 }

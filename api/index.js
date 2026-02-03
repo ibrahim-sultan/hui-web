@@ -15,6 +15,7 @@ import fs from 'fs';
 import postRoutes from "./routes/posts.js";
 import mediaRoutes from "./routes/media.js";
 import adminRoutes from "./routes/admin.js";
+import facultyContentRouter from "./routes/facultyContent.js";
 import Setting from "./models/Setting.js";
 
 dotenv.config();
@@ -40,7 +41,7 @@ app.use(helmet({
   contentSecurityPolicy: {
     directives: {
       defaultSrc: ["'self'"],
-      styleSrc: ["'self'", "'unsafe-inline'"],
+      styleSrc: ["'self'", "'unsafe-inline'", "https:"],
       scriptSrc: ["'self'"],
       imgSrc: ["'self'", "data:", "https:"],
       connectSrc: ["'self'", "https:"],
@@ -260,6 +261,7 @@ app.post('/api/login', authLimiter, validateLogin, handleValidationErrors, async
 app.use('/api/posts', postRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/media', mediaRoutes);
+app.use('/api/facultyContent', facultyContentRouter);
 
 // Serve client build in production (SPA fallback)
 const clientBuildPath = path.join(process.cwd(), '../client/build');
