@@ -126,14 +126,16 @@ function FacultyDetail() {
   const [mirroredHtml, setMirroredHtml] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  if (slug !== "agriculture") {
-    return null;
-  }
-
   useEffect(() => {
     let isMounted = true;
     setLoading(true);
     setMirroredHtml(null);
+    if (slug !== "agriculture") {
+      if (isMounted) setLoading(false);
+      return () => {
+        isMounted = false;
+      };
+    }
     axios
       .get(`/api/facultyContent/${slug}`)
       .then((res) => {
@@ -149,6 +151,10 @@ function FacultyDetail() {
       isMounted = false;
     };
   }, [slug]);
+
+  if (slug !== "agriculture") {
+    return null;
+  }
 
   return (
     <div>
