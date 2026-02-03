@@ -170,9 +170,26 @@ function FacultyDetail() {
 
       {mirroredHtml ? (
         <section style={{ padding: "0", background: "#ffffff" }}>
+          <style>
+            {`
+              .faculty-mirror a { color: #157646 !important; }
+              .faculty-mirror h1, 
+              .faculty-mirror h2, 
+              .faculty-mirror h3 { color: #157646 !important; }
+              .faculty-mirror .btn, 
+              .faculty-mirror button { 
+                background-color: #157646 !important; 
+                border-color: #157646 !important; 
+              }
+              .faculty-mirror .section-header h2,
+              .faculty-mirror .section-title { color: #157646 !important; }
+              .faculty-mirror .accent,
+              .faculty-mirror .highlight { color: #157646 !important; }
+            `}
+          </style>
           <div
             className="faculty-mirror"
-            style={{ maxWidth: "100%", overflow: "hidden" }}
+            style={{ maxWidth: "100%", overflow: "hidden", borderTop: "4px solid #157646" }}
             dangerouslySetInnerHTML={{ __html: mirroredHtml }}
           />
         </section>
