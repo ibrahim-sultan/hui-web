@@ -247,8 +247,6 @@ const ApplicationProcess = ({
     phd: "₦25,000"
   };
 
-  const defaultImportantDates = [];
-
   const applicationFees = feesOverride ? { ...defaultApplicationFees, ...feesOverride } : defaultApplicationFees;
 
   let undergraduateSteps = defaultUndergraduateSteps;
@@ -257,7 +255,6 @@ const ApplicationProcess = ({
     .filter(s => !stepsToRemove.includes(s.title))
     .map((s, idx) => ({ ...s, step: idx + 1 }));
 
-  let importantDates = defaultImportantDates;
 
   const paymentMethods = paymentMethodsOverride && Array.isArray(paymentMethodsOverride)
     ? paymentMethodsOverride

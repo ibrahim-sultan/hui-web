@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams, Link } from "react-router-dom";
-import { FaExternalLinkAlt, FaUniversity, FaUserTie } from "react-icons/fa";
+import { FaUniversity, FaUserTie } from "react-icons/fa";
 
 const FACULTY_MAP = {
   management: {
@@ -121,7 +121,6 @@ function FacultyDetail() {
   const { slug } = useParams();
   const meta = FACULTY_MAP[slug];
   const title = meta?.title || "Faculty";
-  const site = meta?.site || "";
   const data = FACULTY_DATA[title];
   const [mirroredHtml, setMirroredHtml] = useState(null);
   const [loading, setLoading] = useState(true);
